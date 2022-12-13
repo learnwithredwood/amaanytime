@@ -5,6 +5,8 @@ import { AdminLayout } from './layouts/Admin/AdminLayout'
 import { RolesLayout } from './layouts/Admin/RolesLayout'
 import { TeamsLayout } from './layouts/Admin/TeamsLayout'
 import { UsersLayout } from './layouts/Admin/UsersLayout'
+import { ContentLayout } from './layouts/ContentLayout'
+import { LegalLayout } from './layouts/LegalLayout'
 import { MainLayout } from './layouts/MainLayout/MainLayout'
 import { ProfileLayout } from './layouts/ProfileLayout'
 
@@ -18,6 +20,18 @@ const Routes = () => {
       <Route path="/create-password" page={CreatePasswordPage} name="createPassword" />
       <Route path="/verification" page={VerificationPage} name="verification" />
       <Route path="/verification-reset" page={VerificationResetPage} name="verificationReset" />
+
+      <Set wrap={[ContentLayout]}>
+        <Route path="/about" page={AboutPage} name="about" />
+        <Route path="/contact" page={ContactPage} name="contact" />
+      </Set>
+
+      <Set wrap={[LegalLayout]}>
+        <Route path="/terms-and-conditions" page={TermsAndConditionsPage} name="termsAndConditions" />
+        <Route path="/privacy-policy" page={PrivacyPolicyPage} name="privacyPolicy" />
+        <Route path="/disclaimers" page={DisclaimersPage} name="disclaimers" />
+      </Set>
+
       <Set wrap={MainLayout}>
         <Route path="/" page={HomePage} name="home" />
         <Route notfound page={NotFoundPage} />

@@ -1,7 +1,7 @@
 import { Footer } from './Footer'
 
-export const generated = (args) => {
-  return <Footer {...args} />
+export const generated = () => {
+  return <Footer />
 }
 
 export default { title: 'Components/Footer' }
