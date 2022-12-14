@@ -1,4 +1,5 @@
 import { useAuth } from '@redwoodjs/auth'
+
 import { Icon } from 'src/components/Icon'
 
 const FollowupButton = ({ followUp, onFollowUpClick }) => {
@@ -7,7 +8,7 @@ const FollowupButton = ({ followUp, onFollowUpClick }) => {
   if (currentUser || followUp > 0)
     return (
       <button
-        className={`col-start-1 col-span-1 flex justify-center ${
+        className={`col-span-1 col-start-1 flex justify-center ${
           currentUser && `hover:text-punch`
         }`}
         data-testid="followUpQuestion"

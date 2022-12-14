@@ -1,7 +1,8 @@
 import { render, screen } from '@redwoodjs/testing/web'
 
-import { Answer } from './Answer'
 import { PinnedQuestion as data } from '../../../Question.mocks'
+
+import { Answer } from './Answer'
 
 describe('Answer', () => {
   beforeEach(() => {

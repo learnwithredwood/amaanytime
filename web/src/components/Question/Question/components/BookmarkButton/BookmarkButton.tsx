@@ -1,7 +1,9 @@
+import { useState } from 'react'
+
 import { useAuth } from '@redwoodjs/auth'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/dist/toast'
-import { useState } from 'react'
+
 import { Icon } from 'src/components/Icon'
 import { Tooltip } from 'src/components/Tooltip'
 
@@ -81,7 +83,7 @@ const BookmarkButton = ({ bookmarked, questionId }: IBookmarkButton) => {
   if (isBookmarked)
     return (
       <button
-        className="col-start-4 col-span-1 relative items-center flex justify-center hover:text-punch"
+        className="relative col-span-1 col-start-4 flex items-center justify-center hover:text-punch"
         data-testid="bookmarkButton"
         onClick={handleRemoveBookmark}
         onMouseEnter={toggleTooltip}
@@ -99,7 +101,7 @@ const BookmarkButton = ({ bookmarked, questionId }: IBookmarkButton) => {
   // otherwise...
   return (
     <button
-      className="col-start-4 col-span-1 relative flex items-center justify-center hover:text-punch"
+      className="relative col-span-1 col-start-4 flex items-center justify-center hover:text-punch"
       data-testid="bookmarkButton"
       onClick={handleAddBookmark}
       onMouseEnter={toggleTooltip}

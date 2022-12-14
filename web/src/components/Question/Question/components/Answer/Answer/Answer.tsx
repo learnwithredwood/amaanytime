@@ -1,4 +1,5 @@
 import { Avatar } from 'src/components/Avatar'
+
 import type { IUser } from '../../../Question.d'
 import { Byline } from '../../Byline'
 
@@ -10,7 +11,7 @@ export interface IAnswer {
 
 const Answer = ({ answer, answeredBy, updatedOn }: IAnswer) => {
   return (
-    <div className="large-body mb-8 relative" data-testid="answer">
+    <div className="large-body relative mb-8" data-testid="answer">
       <Avatar
         className="absolute -left-20 -top-3 z-avatar"
         src={answeredBy.avatar}

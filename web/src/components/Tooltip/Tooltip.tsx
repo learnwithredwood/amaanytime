@@ -9,7 +9,7 @@ const Tooltip = ({ className = '', isShowing = false, text }: ITooltip) => {
   if (isShowing)
     return (
       <div
-        className={`bg-ulcaGold uppercase font-slab text-xs py-1 px-2 text-black inline-block whitespace-nowrap ${className}`}
+        className={`inline-block whitespace-nowrap bg-ulcaGold py-1 px-2 font-slab text-xs uppercase text-black ${className}`}
         data-testid="tooltip"
       >
         {text}

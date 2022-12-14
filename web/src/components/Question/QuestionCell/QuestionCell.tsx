@@ -1,4 +1,5 @@
 import type { FindQuestionById } from 'types/graphql'
+
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import { Question } from 'src/components/Question/Question'

@@ -1,5 +1,7 @@
-import type { AvatarColor } from 'src/components/Avatar/Avatar'
 import { Link, routes } from '@redwoodjs/router'
+
+import type { AvatarColor } from 'src/components/Avatar/Avatar'
+
 import { Avatar } from '../../Avatar'
 
 export interface IRecentItem {
@@ -21,15 +23,15 @@ const RecentItem = ({
 }: IRecentItem): JSX.Element => {
   return (
     <div>
-      <div className="font-bold text-base font-sans leading-5 mb-1">
+      <div className="mb-1 font-sans text-base font-bold leading-5">
         <Link
           to={routes.question({ id: Number(questionId) })}
-          className="hover:underline hover:text-punch"
+          className="hover:text-punch hover:underline"
         >
           {question}
         </Link>
       </div>
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <Link to={routes.profile({ username: username })}>
           <Avatar
             alt={fullName}

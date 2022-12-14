@@ -1,4 +1,5 @@
-import { render, screen } from '@redwoodjs/testing/web'
+import { render } from '@redwoodjs/testing/web'
+
 import { Loading, Empty, Failure, Success } from './QuestionsCellWithAnswers'
 import { standard } from './QuestionsCellWithAnswers.mock'
 
@@ -26,3 +27,4 @@ describe('Questions Cell', () => {
       render(<Success questions={standard().questions} />)
     }).not.toThrow()
   })
+})

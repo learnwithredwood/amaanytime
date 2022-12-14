@@ -3,7 +3,7 @@ import { Icon } from 'src/components/Icon'
 const PinnedQuestion = () => {
   return (
     <div
-      className="flex gap-1 uppercase font-slab text-xs text-black py-2 font-extrabold absolute -top-9"
+      className="absolute -top-9 flex gap-1 py-2 font-slab text-xs font-extrabold uppercase text-black"
       data-testid="pinnedQuestion"
     >
       <Icon name="pin" />

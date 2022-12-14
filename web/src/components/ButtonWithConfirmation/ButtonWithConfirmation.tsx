@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { Icon } from '../Icon'
 import { IIcon } from '../Icon/Icon'
 
@@ -42,18 +43,18 @@ const ButtonWithConfirmation = ({
   if (isConfirm)
     return (
       <div
-        className={`font-slab uppercase flex confirmation items-center ${size}`}
+        className={`confirmation flex items-center font-slab uppercase ${size}`}
       >
         <div>{confirmationMessage}</div>
         <button
-          className="text-red-600 flex justify-center items-center"
+          className="flex items-center justify-center text-red-600"
           onClick={handleClick}
         >
           <Icon name="check" />
           {confirmLabel}
         </button>
         <button
-          className="text-gray flex justify-center items-center"
+          className="flex items-center justify-center text-gray"
           onClick={toggleConfirm}
         >
           <Icon name="close" />
@@ -64,18 +65,18 @@ const ButtonWithConfirmation = ({
 
   return (
     <button
-      className={`rounded-3xl font-slab uppercase cursor-pointer ${className} ${size} ${
+      className={`cursor-pointer rounded-3xl font-slab uppercase ${className} ${size} ${
         style === 'inverted' &&
-        `bg-transparent hover:bg-punch text-black hover:text-white border-2 border-black hover:border-punch`
-      } ${style === 'solid' && `bg-punch hover:bg-veridianGreen text-white`} ${
+        `border-2 border-black bg-transparent text-black hover:border-punch hover:bg-punch hover:text-white`
+      } ${style === 'solid' && `bg-punch text-white hover:bg-veridianGreen`} ${
         style === 'none' && `bg-transparent text-black hover:text-punch`
       } ${
         style === 'underline' &&
-        `underline hover:no-underline bg-transparent text-black hover:text-punch`
+        `bg-transparent text-black underline hover:text-punch hover:no-underline`
       } ${
         iconSide === 'left' &&
-        'flex flex-row-reverse gap-2 items-center justify-center'
-      } ${iconSide === 'right' && 'flex gap-2 items-center justify-center'}`}
+        'flex flex-row-reverse items-center justify-center gap-2'
+      } ${iconSide === 'right' && 'flex items-center justify-center gap-2'}`}
       data-testid="button"
       onClick={toggleConfirm}
     >

@@ -1,8 +1,10 @@
 import { render, screen } from '@redwoodjs/testing/web'
+
 import { formatRelativeDate } from 'src/utils/DateHelpers'
 
-import { Byline } from './Byline'
 import { PinnedQuestion as data } from '../../Question.mocks'
+
+import { Byline } from './Byline'
 
 describe('Byline', () => {
   it('renders successfully', () => {

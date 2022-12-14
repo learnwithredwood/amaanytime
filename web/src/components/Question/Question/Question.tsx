@@ -1,24 +1,29 @@
-import { Link, routes } from '@redwoodjs/router'
+import { useState } from 'react'
+
 import { motion } from 'framer-motion'
-import { Avatar } from '../../Avatar'
-import type { IQuestion } from './Question.d'
-import { Icon } from '../../Icon'
+
+import { useAuth } from '@redwoodjs/auth'
+import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
-import { useAuth } from '@redwoodjs/auth'
-import { Answer } from './components/Answer/Answer'
-import { Byline } from './components/Byline'
-import { useState } from 'react'
+
 import { DropdownMenu } from 'src/components/DropdownMenu'
-import { ShareButton } from './components/ShareButton'
-import { BookmarkButton } from './components/BookmarkButton'
-import AnswerForm from './components/Answer/AnswerForm/AnswerForm'
-import { LikeButton } from './components/LikeButton/LikeButton'
 import { IDropdownMenuOptions } from 'src/components/DropdownMenu/DropdownMenu'
+
+import { Avatar } from '../../Avatar'
+import { Icon } from '../../Icon'
+
+import { Answer } from './components/Answer/Answer'
+import AnswerForm from './components/Answer/AnswerForm/AnswerForm'
 import { AskAgainButton } from './components/AskAgainButton'
-import { ANSWER_QUESTION_MUTATION, DELETE_QUESTION_MUTATION } from './Mutations'
+import { BookmarkButton } from './components/BookmarkButton'
+import { Byline } from './components/Byline'
 import { FollowupButton } from './components/FollowupButton'
+import { LikeButton } from './components/LikeButton/LikeButton'
 import { PinnedQuestion } from './components/PinnedQuestion/PinnedQuestion'
+import { ShareButton } from './components/ShareButton'
+import { ANSWER_QUESTION_MUTATION, DELETE_QUESTION_MUTATION } from './Mutations'
+import type { IQuestion } from './Question.d'
 
 const Question = ({
   answer,
@@ -35,7 +40,7 @@ const Question = ({
   question,
   questionId,
   showActions = true,
-  rerouteOnDelete,
+  // rerouteOnDelete,
   updatedOn,
 }: IQuestion): JSX.Element => {
   const { currentUser } = useAuth()
@@ -165,7 +170,7 @@ const Question = ({
       variants={fadeOutVariants}
     >
       <div
-        className={`flex gap-5 pt-9 pl-14 pr-10 pb-9 relative border-b-2 border-black z-question ${className}`}
+        className={`relative z-question flex gap-5 border-b-2 border-black pt-9 pl-14 pr-10 pb-9 ${className}`}
       >
         <div className="absolute right-10 top-7 z-optionsMenu">
           {isQuestionOptionsShowing && (
@@ -184,24 +189,24 @@ const Question = ({
         </div>
         <Avatar
           avatarColor={askedBy?.avatarColor}
-          className="z-avatar relative"
+          className="relative z-avatar"
           src={askedBy.avatar}
           alt={askedBy.username}
           height={68}
           width={68}
         />
-        <div className="flex-1 relative">
+        <div className="relative flex-1">
           {pinned && <PinnedQuestion />}
           <div data-testid="askedBy" className="z-byline">
             <Byline person={askedBy} displayDate={askedOn} />
           </div>
           <div
-            className="font-condensed text-[2.5rem] leading-none pt-o pb-8 relative"
+            className="pt-o relative pb-8 font-condensed text-[2.5rem] leading-none"
             data-testid="question"
           >
             {/* connect question and answer / answer form */}
             {(answer || (!answer && answeredBy.id === currentUser.id)) && (
-              <div className="h-full w-0 border-l-2 border-black block absolute -left-14 z-avatarConnector" />
+              <div className="absolute -left-14 z-avatarConnector block h-full w-0 border-l-2 border-black" />
             )}
             <Link
               to={routes.question({ id: String(questionId) })}
@@ -233,7 +238,7 @@ const Question = ({
           {/* action buttons */}
           {showActions && (
             <div
-              className="grid grid-cols-5 w-full"
+              className="grid w-full grid-cols-5"
               data-testid="actionButtons"
             >
               {/* Follow-Up */}

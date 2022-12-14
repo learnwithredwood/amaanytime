@@ -1,7 +1,8 @@
+import { FindQuestions } from 'types/graphql'
+
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import { Question } from '../Question/Question'
-import { FindQuestions } from 'types/graphql'
 
 export const QUERY = gql`
   query FindQuestions($answeredByUsername: String, $askedByUsername: String) {

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import { Icon } from 'src/components/Icon'
 import { Tooltip } from 'src/components/Tooltip'
 
@@ -14,7 +15,7 @@ const ShareButton = () => {
 
   return (
     <button
-      className="col-start-5 col-span-1 hover:text-punch relative flex justify-center items-center"
+      className="relative col-span-1 col-start-5 flex items-center justify-center hover:text-punch"
       onClick={handleClick}
       onMouseEnter={toggleTooltip}
       onMouseLeave={toggleTooltip}

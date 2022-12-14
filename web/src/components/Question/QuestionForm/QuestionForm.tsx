@@ -1,5 +1,6 @@
 import { useAuth } from '@redwoodjs/auth'
 import { Form, FormError, Submit, HiddenField } from '@redwoodjs/forms'
+
 import { Avatar } from 'src/components/Avatar'
 import { AmaTextarea } from 'src/components/Form/AmaTextarea'
 
@@ -27,11 +28,11 @@ const QuestionForm = (props) => {
             <Avatar
               alt={props.answeredBy.fullName}
               avatarColor={props.answeredBy.avatarColor}
-              className="mx-auto z-avatar relative"
+              className="relative z-avatar mx-auto"
               height={32}
               width={32}
             />
-            <div className="absolute h-full w-0 border-l-2 border-black left-1/2 z-avatarConnector" />
+            <div className="absolute left-1/2 z-avatarConnector h-full w-0 border-l-2 border-black" />
           </div>
           <div className="items-center self-center">
             <p>
@@ -42,7 +43,7 @@ const QuestionForm = (props) => {
           <Avatar
             alt={currentUser.fullName}
             avatarColor={currentUser.avatarColor}
-            className="z-avatar relative"
+            className="relative z-avatar"
             height={72}
             width={72}
           />

@@ -1,4 +1,5 @@
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+
 import { RecentItem } from '../RecentItem'
 
 export const QUERY = gql`

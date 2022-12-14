@@ -1,5 +1,7 @@
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 import { FindBookmarks } from 'types/graphql'
+
+import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+
 import { Question } from '../Question/Question'
 
 export const QUERY = gql`

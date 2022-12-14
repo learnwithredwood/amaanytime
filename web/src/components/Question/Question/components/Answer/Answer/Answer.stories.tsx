@@ -1,5 +1,6 @@
-import { Answer, IAnswer } from './Answer'
 import { PinnedQuestion as data } from '../../../Question.mocks'
+
+import { Answer, IAnswer } from './Answer'
 
 const Template = (args: IAnswer) => <Answer {...args} />
 

@@ -1,5 +1,7 @@
-import { useAuth } from '@redwoodjs/auth'
 import { useEffect, useState } from 'react'
+
+import { useAuth } from '@redwoodjs/auth'
+
 import { Icon } from 'src/components/Icon'
 import { Tooltip } from 'src/components/Tooltip'
 
@@ -35,7 +37,7 @@ const AskAgainButton = ({
 
   return (
     <button
-      className={`col-start-3 col-span-1 flex justify-center relative ${
+      className={`relative col-span-1 col-start-3 flex justify-center ${
         currentUser && `hover:text-punch`
       }`}
       data-testid="askAgain"

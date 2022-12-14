@@ -1,5 +1,6 @@
-import { Byline } from './Byline'
 import { PinnedQuestion as data } from '../../Question.mocks'
+
+import { Byline } from './Byline'
 
 const Template = (args) => <Byline {...args} />
 

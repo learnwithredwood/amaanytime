@@ -1,7 +1,8 @@
+import type { FindQuestionsWithoutAnswers } from 'types/graphql'
+
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import { Question } from '../Question/Question'
-import type { FindQuestionsWithoutAnswers } from 'types/graphql'
 
 export const QUERY = gql`
   query FindQuestionsWithoutAnswers(
