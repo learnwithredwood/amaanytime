@@ -30,6 +30,7 @@ export const getCurrentUser = async (session) => {
       name: true,
       nickname: true,
       pronouns: true,
+      username: true,
     },
   })
 
@@ -51,6 +52,7 @@ export const getCurrentUser = async (session) => {
     nickname: user.nickname,
     pronouns: user.pronouns,
     roles: [...roles, ...(user.admin ? ['super admin'] : [])],
+    username: user.username,
   }
 }
 
