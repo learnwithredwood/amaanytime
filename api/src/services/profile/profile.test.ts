@@ -111,7 +111,7 @@ describe('profile', () => {
   describe('update profile email', () => {
     scenario('updates email', async (scenario: StandardScenario) => {
       mockCurrentUser(defaultCurrentUser(scenario.user.profile))
-      expect(
+      await expect(
         updateEmail({
           input: {
             password: defaultProfilePassword,
