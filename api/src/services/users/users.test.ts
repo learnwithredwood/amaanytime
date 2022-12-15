@@ -45,6 +45,7 @@ describe('users', () => {
           active: true,
           admin: false,
           email: 'String4652567',
+          username: 'user4652567',
         },
       })
 
@@ -70,6 +71,7 @@ describe('users', () => {
             active: true,
             admin: false,
             email: 'String4652567',
+            username: 'exampleuser',
             teamIds: [teamId],
             roleIds: [`${teamId},${roleId}`],
           },
