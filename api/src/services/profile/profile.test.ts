@@ -192,5 +192,6 @@ const defaultCurrentUser = (profile) => {
     name: profile.name,
     nickname: profile.nickname,
     pronouns: profile.pronouns,
+    username: profile.username,
   }
 }
