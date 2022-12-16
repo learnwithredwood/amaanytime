@@ -8,6 +8,7 @@ test.beforeAll(async () => {
     resetToken: 'waffleCrisp',
     resetTokenExpiresAt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
     verifyToken: 'cheerios',
+    username: 'Captain Crunch',
   })
 })
 
