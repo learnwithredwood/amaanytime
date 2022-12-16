@@ -4,9 +4,6 @@ module.exports = {
     extend: {
       backgroundImage: {
         bg: "url('./images/bg.jpg')",
-        loggedInUserAside: "url('./images/bg-loggedInUser.svg')",
-        search: "url('./images/bg-search.svg')",
-        searchUnderstated: "url('./images/bg-search--understated.svg')",
       },
       backgroundSize: {
         half: '50% 100%',
