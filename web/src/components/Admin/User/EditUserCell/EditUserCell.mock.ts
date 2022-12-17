@@ -3,7 +3,7 @@ export const standard = () => ({
     id: '42',
     email: 'harry.potter@wizard.com',
     name: 'Harry',
-    username: 'Potter',
+    username: 'CoolBeansPotter',
     nickname: 'Scar',
     pronouns: 'he',
     active: true,
