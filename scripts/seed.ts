@@ -38,6 +38,7 @@ function generateUser(
     nickname: chance.word(),
     pronouns: pickRandom(['he/him', 'she/her', 'they/them', 'it/its']),
     salt: USERS_SALT,
+    //@cli_ignore
     username: chance.word(),
     ...override,
   }
