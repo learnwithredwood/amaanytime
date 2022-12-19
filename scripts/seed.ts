@@ -12,6 +12,7 @@ export function hashPassword(password: string, salt = 'ZEAL') {
   ]
 }
 
+const chance = new Chance('ZEAL')
 const {
   ADMIN_USERNAME = 'admin',
   ADMIN_EMAIL = 'admin@example.com',
@@ -19,10 +20,10 @@ const {
   USERS_PASSWORD = 'password',
 } = process.env
 
+const USERNAME = 'fake' + chance.word()
+
 const [ADMIN_HASHED_PASSWORD, ADMIN_SALT] = hashPassword(ADMIN_PASSWORD)
 const [USERS_HASHED_PASSWORD, USERS_SALT] = hashPassword(USERS_PASSWORD)
-
-const chance = new Chance('ZEAL')
 
 function pickRandom(arr: string[]) {
   return arr[Math.floor(Math.random() * arr.length)]
@@ -39,7 +40,7 @@ function generateUser(
     pronouns: pickRandom(['he/him', 'she/her', 'they/them', 'it/its']),
     salt: USERS_SALT,
     //@cli_ignore
-    username: chance.word(),
+    username: USERNAME,
     ...override,
   }
 }

@@ -40,7 +40,7 @@ test.describe('admin crud user', async () => {
     await emailInput.click()
     await emailInput.fill(MOCK_USER.email)
 
-    const usernameInput = page.locator('input[name="username"]')
+    const usernameInput = page.getByLabel('Username')
     await usernameInput.click()
     await usernameInput.fill(MOCK_USER.username)
 
@@ -99,7 +99,7 @@ test.describe('admin crud user', async () => {
     })
     await page.goto(`/admin/users/${newlyCreatedUser?.id}/edit`)
 
-    const usernameInput = page.locator('input[name="username"]')
+    const usernameInput = page.getByLabel('Username')
     await usernameInput.click()
     await usernameInput.fill(NEW_MOCK_INFO.username)
 
