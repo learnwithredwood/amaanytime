@@ -205,6 +205,7 @@ describe('users', () => {
     })
     expect(result.email).toEqual(result.id)
     expect(result.name).toEqual('Removed User')
+    expect(result.username).toEqual(result.id)
     expect(result.nickname).toEqual(null)
     expect(result.pronouns).toEqual(null)
     expect(result.active).toEqual(false)
