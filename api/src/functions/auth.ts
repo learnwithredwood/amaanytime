@@ -124,7 +124,8 @@ export const handler = async (event, context) => {
     handler: async ({ username, hashedPassword, salt, userAttributes }) => {
       const user = await db.user.create({
         data: {
-          email: username,
+          username: username,
+          email: userAttributes.email,
           hashedPassword: hashedPassword,
           salt: salt,
           verifyToken: randomUUID(),
@@ -159,7 +160,8 @@ export const handler = async (event, context) => {
     // something like `id` or `userId` or even `email`)
     authFields: {
       id: 'id',
-      username: 'email',
+      username: 'username',
+      email: 'email',
       hashedPassword: 'hashedPassword',
       salt: 'salt',
       resetToken: 'resetToken',
