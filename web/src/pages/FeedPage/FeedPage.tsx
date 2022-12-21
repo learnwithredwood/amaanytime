@@ -5,9 +5,7 @@ import { MetaTags } from '@redwoodjs/web'
 import { Icon } from 'src/components/Icon'
 
 const FeedPage = () => {
-  const { isAuthenticated, currentUser } = useAuth()
-
-  console.log({ currentUser })
+  const { isAuthenticated } = useAuth()
 
   const Links = () => {
     return (
