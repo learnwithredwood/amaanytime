@@ -30,6 +30,7 @@ const Routes = () => {
       </Set>
       <Set wrap={MainLayout}>
         <Route path="/" page={HomePage} name="home" />
+        <Route path="/feed" page={FeedPage} name="feed" />
         <Route notfound page={NotFoundPage} />
         <Route path="/forbidden" page={ForbiddenPage} name="forbidden" />
       </Set>
