@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { useEffect } from 'react'
 
+// import AHAanytime from 'web/src/images/logo.svg'
+
 import { useAuth } from '@redwoodjs/auth'
 import {
   Form,
@@ -13,6 +15,8 @@ import {
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
+
+import { Footer } from 'src/components/Footer/Footer'
 
 const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
@@ -46,83 +50,91 @@ const LoginPage = () => {
   return (
     <>
       <MetaTags title="Login" />
-      <main className="rw-main" data-testid="login-page">
+      <main className="grid grid-cols-12 pt-24" data-testid="login-page">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="rw-scaffold rw-login-container">
-          <div className="rw-segment">
-            <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">Login</h2>
-            </header>
+        <div className="relative col-span-9 col-start-3 mt-28 mb-5 grid grid-cols-9 border-2 border-black">
+          {/* <AHAanytime /> */}
+          <div className="-main col-span-5 -mt-10 pl-10 pr-12">
+            <h1 className="relative -left-6 mb-5 inline-block bg-bg px-6 font-condensed text-7xl uppercase text-eternity">
+              Sign In
+            </h1>
+            <Form onSubmit={onSubmit} className="relative mb-8">
+              <Label
+                name="username"
+                className="rw-label"
+                errorClassName="rw-label rw-label-error"
+              >
+                Username
+              </Label>
+              <TextField
+                name="username"
+                className="rw-input"
+                errorClassName="rw-input rw-input-error"
+                ref={usernameRef}
+                validation={{
+                  required: {
+                    value: true,
+                    message: 'Username is required',
+                  },
+                }}
+              />
 
-            <div className="rw-segment-main">
-              <div className="rw-form-wrapper">
-                <Form onSubmit={onSubmit} className="rw-form-wrapper">
-                  <Label
-                    name="username"
-                    className="rw-label"
-                    errorClassName="rw-label rw-label-error"
-                  >
-                    Username
-                  </Label>
-                  <TextField
-                    name="username"
-                    className="rw-input"
-                    errorClassName="rw-input rw-input-error"
-                    ref={usernameRef}
-                    validation={{
-                      required: {
-                        value: true,
-                        message: 'Username is required',
-                      },
-                    }}
-                  />
+              <FieldError name="username" className="rw-field-error" />
 
-                  <FieldError name="username" className="rw-field-error" />
-
-                  <Label
-                    name="password"
-                    className="rw-label"
-                    errorClassName="rw-label rw-label-error"
-                  >
-                    Password
-                  </Label>
-                  <PasswordField
-                    name="password"
-                    className="rw-input"
-                    errorClassName="rw-input rw-input-error"
-                    autoComplete="current-password"
-                    validation={{
-                      required: {
-                        value: true,
-                        message: 'Password is required',
-                      },
-                    }}
-                  />
-
-                  <div className="rw-forgot-link">
-                    <Link
-                      to={routes.forgotPassword()}
-                      className="rw-forgot-link"
-                    >
-                      Forgot Password?
-                    </Link>
-                  </div>
-
-                  <FieldError name="password" className="rw-field-error" />
-
-                  <div className="rw-button-group">
-                    <Submit className="rw-button rw-button-blue">Login</Submit>
-                  </div>
-                </Form>
+              <div className="forgot-link absolute right-0">
+                <Link
+                  to={routes.forgotPassword()}
+                  className="font-bold underline hover:no-underline"
+                >
+                  Forgot password?
+                </Link>
               </div>
-            </div>
+
+              <Label
+                name="password"
+                className="rw-label"
+                errorClassName="rw-label rw-label-error"
+              >
+                Password
+              </Label>
+
+              <PasswordField
+                name="password"
+                className="rw-input"
+                errorClassName="rw-input rw-input-error"
+                autoComplete="current-password"
+                validation={{
+                  required: {
+                    value: true,
+                    message: 'Password is required',
+                  },
+                }}
+              />
+
+              <FieldError name="password" className="rw-field-error" />
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <span>Don&apos;t have an account?</span>{' '}
+                  <Link to={routes.signup()} className="rw-link">
+                    Sign up
+                  </Link>
+                </div>
+                <Submit className=" cursor-pointer rounded-3xl bg-punch py-2 px-6 font-slab uppercase text-white hover:bg-veridianGreen">
+                  Login
+                </Submit>
+              </div>
+            </Form>
           </div>
-          <div className="rw-login-link">
-            <span>Don&apos;t have an account?</span>{' '}
-            <Link to={routes.signup()} className="rw-link">
-              Sign up!
-            </Link>
-          </div>
+        </div>
+
+        <div className="col-span-4 col-start-5 mb-40 text-center">
+          <h2 className="mb-1 font-slab text-base font-extrabold uppercase">
+            Explore the Site
+          </h2>
+        </div>
+        <div className="col-span-6 col-start-4">
+          <Footer />
         </div>
       </main>
     </>
