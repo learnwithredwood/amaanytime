@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useEffect } from 'react'
 
-// import AHAanytime from 'web/src/images/logo.svg'
+import { AMAanytime } from 'web/src/components/ImageComponents/AMAanytime/AMAanytime'
 
 import { useAuth } from '@redwoodjs/auth'
 import {
@@ -17,6 +17,12 @@ import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
 import { Footer } from 'src/components/Footer/Footer'
+import { BlueStar } from 'src/components/ImageComponents/BlueStar/BlueStar'
+import { OrangeStar } from 'src/components/ImageComponents/OrangeStar/OrangeStar'
+import { QuestionBubbleLeft } from 'src/components/ImageComponents/QuestionBubbleLeft/QuestionBubbleLeft'
+import { QuestionBubbleRight } from 'src/components/ImageComponents/QuestionBubbleRight/QuestionBubbleRight'
+import { QuestionTop } from 'src/components/ImageComponents/QuestionTop/QuestionTop'
+import { QuestionTopRight } from 'src/components/ImageComponents/QuestionTopRight/QuestionTopRight'
 
 const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
@@ -53,22 +59,28 @@ const LoginPage = () => {
       <main className="grid grid-cols-12 pt-24" data-testid="login-page">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
         <div className="relative col-span-9 col-start-3 mt-28 mb-5 grid grid-cols-9 border-2 border-black">
-          {/* <AHAanytime /> */}
-          <div className="-main col-span-5 -mt-10 pl-10 pr-12">
+          <AMAanytime />
+          <QuestionBubbleRight />
+          <QuestionBubbleLeft />
+          <QuestionTopRight />
+          <QuestionTop />
+          <BlueStar />
+          <OrangeStar />
+          <div className=" sm:g-10 sm:flex-end col-span-5 -mt-10 pl-10 pr-12 sm:isolate sm:flex-col ">
             <h1 className="relative -left-6 mb-5 inline-block bg-bg px-6 font-condensed text-7xl uppercase text-eternity">
               Sign In
             </h1>
             <Form onSubmit={onSubmit} className="relative mb-8">
               <Label
                 name="username"
-                className="rw-label"
+                className="field"
                 errorClassName="rw-label rw-label-error"
               >
                 Username
               </Label>
               <TextField
                 name="username"
-                className="rw-input"
+                className="input-wrapper"
                 errorClassName="rw-input rw-input-error"
                 ref={usernameRef}
                 validation={{
@@ -92,7 +104,7 @@ const LoginPage = () => {
 
               <Label
                 name="password"
-                className="rw-label"
+                className="field"
                 errorClassName="rw-label rw-label-error"
               >
                 Password
@@ -100,7 +112,7 @@ const LoginPage = () => {
 
               <PasswordField
                 name="password"
-                className="rw-input"
+                className="input-wrapper"
                 errorClassName="rw-input rw-input-error"
                 autoComplete="current-password"
                 validation={{
