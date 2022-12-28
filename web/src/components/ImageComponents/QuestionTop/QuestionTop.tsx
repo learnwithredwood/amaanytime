@@ -4,7 +4,7 @@ const QuestionTop = () => {
   return (
     <Question
       aria-labelledby="question-mark"
-      className="absolute -top-[12rem] left-[10rem]"
+      className="top-18 w-7.5 h-15 absolute left-9"
       role="img"
     />
   )

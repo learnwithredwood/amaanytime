@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         bg: "url('./images/bg.jpg')",
+        search: "url('web/src/images/bg__search.svg')",
       },
       backgroundSize: {
         half: '50% 100%',

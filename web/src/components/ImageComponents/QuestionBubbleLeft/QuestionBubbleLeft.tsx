@@ -4,7 +4,7 @@ const QuestionBubbleLeft = () => {
   return (
     <Question
       aria-labelledby="question-bubble"
-      className="absolute -left-[17rem] -top-[5rem]"
+      className="hidden lg:-left-[17rem] lg:-top-[5rem] lg:block"
       role="img"
     />
   )

@@ -1,7 +1,7 @@
 import Star from './OrangeStar.svg'
 
-const OrangeStar = () => {
-  return <Star aria-labelledby="orange-star" className="h-20 w-20" role="img" />
+const OrangeStar = ({ className }) => {
+  return <Star aria-labelledby="orange-star" className={className} role="img" />
 }
 
 export { OrangeStar }

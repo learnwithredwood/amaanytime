@@ -23,10 +23,6 @@
     @apply bg-bg;
   }
 
-  svg {
-    fill: currentColor;
-  }
-
   form {
     @apply mb-16;
   }
@@ -158,19 +154,6 @@
 
   .selected-action {
     @apply text-punch;
-  }
-
-  footer nav a {
-    @apply whitespace-nowrap hover:text-punch hover:underline;
-  }
-
-  .footer-nav li::after {
-    content: '•';
-    @apply mx-2;
-  }
-
-  .footer-nav li:last-child::after {
-    @apply content mx-0;
   }
 
   button.small {
