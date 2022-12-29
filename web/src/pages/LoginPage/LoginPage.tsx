@@ -51,27 +51,25 @@ const LoginPage = () => {
   return (
     <>
       <MetaTags title="Login" />
-      <main
-        className="col relative items-center gap-4 px-5"
-        data-testid="login-page"
-      >
+      <main className="items-center px-5" data-testid="login-page">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div>
-          <div className="flex-start col flex gap-1.5 p-10">
-            <AMAanytime />
-            <QuestionTop />
-          </div>
+        <div className="col flex p-14">
+          <AMAanytime />
+          <QuestionTop />
           <QuestionTopRight />
+          <QuestionBubbleRight />
+          <QuestionBubbleLeft />
+          <BlueStar />
         </div>
-        <QuestionBubbleRight />
-        <QuestionBubbleLeft />
-        <BlueStar />
 
-        <div className="isolate gap-10 border-2 border-black">
-          <h1 className="relative -left-6 -mt-4 inline-block flex flex-row items-start justify-center gap-2 bg-bg font-condensed text-7xl uppercase text-eternity">
+        <div className="border-2 border-black lg:absolute lg:left-60 lg:top-64 lg:h-96 lg:w-8/12">
+          <h1 className="relative left-36 -mt-12 inline-block bg-bg p-2 font-condensed text-7xl uppercase text-eternity md:left-80 lg:left-767">
             Sign In
           </h1>
-          <Form onSubmit={onSubmit} className="items-start gap-8 px-4">
+          <Form
+            onSubmit={onSubmit}
+            className="items-start px-4 lg:absolute lg:left-767 lg:h-72 lg:w-96"
+          >
             <AmaTextField
               name="username"
               label="Username"
@@ -112,33 +110,35 @@ const LoginPage = () => {
               required={true}
             />
 
-            <div className="gap-5	">
-              <Submit className="g-4 h-12 w-80 cursor-pointer items-center rounded-3xl bg-punch font-slab uppercase text-white hover:bg-veridianGreen">
-                Login
-              </Submit>
-              <div className="text-center text-base">
-                <span>Don&apos;t have an account?</span>{' '}
-                <Link
-                  to={routes.signup()}
-                  className="font-bold underline hover:no-underline"
-                >
-                  Sign up
-                </Link>
-              </div>
+            {/* <div className="g-5"> */}
+            <Submit className="g-10 h-12 w-full cursor-pointer rounded-3xl bg-punch font-slab text-base font-bold uppercase text-white hover:bg-veridianGreen">
+              Login
+            </Submit>
+            <div className="pt-6 text-center text-base">
+              <span>Don&apos;t have an account?</span>{' '}
+              <Link
+                to={routes.signup()}
+                className="font-bold underline hover:no-underline"
+              >
+                Sign up
+              </Link>
             </div>
+            {/* </div> */}
           </Form>
         </div>
 
-        <div className="col-span-4 col-start-5 pt-12 text-center">
-          <h2 className="mb-1 font-slab text-base font-extrabold uppercase">
+        <div className="pt-4 text-center">
+          <h2 className="mb-2 font-slab text-base font-extrabold uppercase lg:mb-10">
             Explore the Site
           </h2>
           <SearchInput className="mx-auto" />
-          <OrangeStar className="w-6.2 h-11.1" />
-          <OrangeStar className="h-8 w-5" />
         </div>
+        <div className="left-96 top-2 h-12 w-6">
+          <OrangeStar />
+        </div>
+        {/* <OrangeStar className="h-8 w-6" /> */}
       </main>
-      <div className="col-span-6 col-start-4">
+      <div className="lg:mt-">
         <Footer />
       </div>
     </>

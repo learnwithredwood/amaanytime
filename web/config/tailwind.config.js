@@ -23,6 +23,13 @@ module.exports = {
         eternity: '##2d2d2b', // almost black
         sonicSilver: '#747474', // mid gray
       },
+      spacing: {
+        58: '250px',
+        18: '2px',
+        88: '360px',
+        625: '625px',
+        767: '767px',
+      },
     },
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],

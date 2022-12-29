@@ -4,7 +4,7 @@ const BlueStar = () => {
   return (
     <Star
       aria-labelledby="blue-star"
-      className="top-60 left-6 h-20 w-12"
+      className="absolute top-58 left-6 h-20 w-12"
       role="img"
     />
   )
