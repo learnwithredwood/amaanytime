@@ -51,25 +51,22 @@ const LoginPage = () => {
   return (
     <>
       <MetaTags title="Login" />
-      <main className="items-center px-5" data-testid="login-page">
+      <main className="mx-5" data-testid="login-page">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="col flex p-14">
-          <AMAanytime />
-          <QuestionTop />
+        <div className="relative pb-10">
+          <AMAanytime className="mx-auto w-48" />
+          <QuestionTop className="absolute top-3 left-3 w-11" />
           <QuestionTopRight />
           <QuestionBubbleRight />
           <QuestionBubbleLeft />
           <BlueStar />
         </div>
 
-        <div className="border-2 border-black lg:absolute lg:left-60 lg:top-64 lg:h-96 lg:w-8/12">
-          <h1 className="relative left-36 -mt-12 inline-block bg-bg p-2 font-condensed text-7xl uppercase text-eternity md:left-80 lg:left-767">
+        <div className="border-2 border-black">
+          <h1 className="relative mx-auto -mt-12 inline-block bg-bg p-2 font-condensed text-7xl uppercase text-eternity">
             Sign In
           </h1>
-          <Form
-            onSubmit={onSubmit}
-            className="items-start px-4 lg:absolute lg:left-767 lg:h-72 lg:w-96"
-          >
+          <Form onSubmit={onSubmit} className="items-start px-4">
             <AmaTextField
               name="username"
               label="Username"
@@ -128,7 +125,7 @@ const LoginPage = () => {
         </div>
 
         <div className="pt-4 text-center">
-          <h2 className="mb-2 font-slab text-base font-extrabold uppercase lg:mb-10">
+          <h2 className="mb-2 font-slab text-base font-extrabold uppercase">
             Explore the Site
           </h2>
           <SearchInput className="mx-auto" />
@@ -138,7 +135,7 @@ const LoginPage = () => {
         </div>
         {/* <OrangeStar className="h-8 w-6" /> */}
       </main>
-      <div className="lg:mt-">
+      <div>
         <Footer />
       </div>
     </>
