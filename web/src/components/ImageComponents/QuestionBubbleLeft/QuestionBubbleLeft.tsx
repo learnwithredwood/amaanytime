@@ -1,10 +1,10 @@
 import Question from './QuestionBubbleLeft.svg'
 
-const QuestionBubbleLeft = () => {
+const QuestionBubbleLeft = ({ className }) => {
   return (
     <Question
       aria-labelledby="question-bubble"
-      className="absolute hidden lg:left-1 lg:top-36 lg:block"
+      className={className}
       role="img"
     />
   )

@@ -15,8 +15,8 @@ import { BlueStar } from 'src/components/ImageComponents/BlueStar/BlueStar'
 import { OrangeStar } from 'src/components/ImageComponents/OrangeStar/OrangeStar'
 import { QuestionBubbleLeft } from 'src/components/ImageComponents/QuestionBubbleLeft/QuestionBubbleLeft'
 import { QuestionBubbleRight } from 'src/components/ImageComponents/QuestionBubbleRight/QuestionBubbleRight'
-import { QuestionTop } from 'src/components/ImageComponents/QuestionTop/QuestionTop'
-import { QuestionTopRight } from 'src/components/ImageComponents/QuestionTopRight/QuestionTopRight'
+import { QuestionMarkBubble } from 'src/components/ImageComponents/QuestionMarkBubble/QuestionMarkBubble'
+import { SlantedQuestionMark } from 'src/components/ImageComponents/SlantedQuestionMark/SlantedQuestionMark'
 import { SearchInput } from 'src/components/SearchInput'
 
 const LoginPage = () => {
@@ -51,22 +51,22 @@ const LoginPage = () => {
   return (
     <>
       <MetaTags title="Login" />
-      <main className="mx-5" data-testid="login-page">
+      <main className="mx-5 mt-8 md:mt-10" data-testid="login-page">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="relative pb-10">
-          <AMAanytime className="mx-auto w-48" />
-          <QuestionTop className="absolute top-3 left-3 w-11" />
-          <QuestionTopRight />
-          <QuestionBubbleRight />
-          <QuestionBubbleLeft />
-          <BlueStar />
+        <div className="relative pb-4">
+          <AMAanytime className="mx-auto w-52 md:w-96 lg:left-40 lg:top-40 lg:mx-20 lg:w-96" />
+          <SlantedQuestionMark className="absolute top-3 left-2 w-10 md:top-12 md:left-12 md:w-12 lg:top-5 lg:left-96 lg:w-8" />
+          <QuestionMarkBubble className="absolute right-1 -bottom-20 w-20 md:right-10 md:-bottom-16 md:w-40 lg:bottom-96 lg:right-40 lg:w-52" />
+          <QuestionBubbleRight className="absolute hidden lg:top-48 lg:right-4 lg:block lg:w-60" />
+          <QuestionBubbleLeft className="absolute hidden lg:top-36 lg:-left-4 lg:block lg:w-80" />
         </div>
 
-        <div className="border-2 border-black">
-          <h1 className="relative mx-auto -mt-12 inline-block bg-bg p-2 font-condensed text-7xl uppercase text-eternity">
+        <div className="relative mt-10 border-2 border-black text-center md:mx-24 md:mt-16 lg:mx-60 lg:mt-0">
+          <h1 className="mx-auto -mt-12 inline-block bg-bg p-2 font-condensed text-7xl uppercase text-eternity">
             Sign In
           </h1>
-          <Form onSubmit={onSubmit} className="items-start px-4">
+          <BlueStar className="absolute -top-10 left-1 w-12 md:left-10 md:-top-52 md:w-10 lg:top-80 lg:left-60 lg:w-12" />
+          <Form onSubmit={onSubmit} className="px-5 pb-5 text-left md:px-10">
             <AmaTextField
               name="username"
               label="Username"
@@ -81,9 +81,9 @@ const LoginPage = () => {
               required={true}
             />
 
-            <TextField name="username" ref={usernameRef} />
+            <TextField className="hidden" name="username" ref={usernameRef} />
 
-            <div className="forgot-link absolute right-8">
+            <div className="forgot-link absolute right-12">
               <Link
                 to={routes.forgotPassword()}
                 className="font-bold underline hover:no-underline"
@@ -107,33 +107,31 @@ const LoginPage = () => {
               required={true}
             />
 
-            {/* <div className="g-5"> */}
-            <Submit className="g-10 h-12 w-full cursor-pointer rounded-3xl bg-punch font-slab text-base font-bold uppercase text-white hover:bg-veridianGreen">
-              Login
-            </Submit>
-            <div className="pt-6 text-center text-base">
-              <span>Don&apos;t have an account?</span>{' '}
-              <Link
-                to={routes.signup()}
-                className="font-bold underline hover:no-underline"
-              >
-                Sign up
-              </Link>
+            <div className="md:flex md:flex-row-reverse md:items-center md:justify-between">
+              <Submit className="h-12 w-full cursor-pointer rounded-3xl bg-punch font-slab text-base font-bold uppercase text-white hover:bg-veridianGreen md:w-56">
+                Login
+              </Submit>
+              <div className="pt-6	text-center text-base">
+                <span>Don&apos;t have an account?</span>{' '}
+                <Link
+                  to={routes.signup()}
+                  className="font-bold underline hover:no-underline"
+                >
+                  Sign up
+                </Link>
+              </div>
             </div>
-            {/* </div> */}
           </Form>
         </div>
 
-        <div className="pt-4 text-center">
+        <div className="relative mt-6 mb-20 text-center">
           <h2 className="mb-2 font-slab text-base font-extrabold uppercase">
             Explore the Site
           </h2>
           <SearchInput className="mx-auto" />
+          <OrangeStar className="absolute right-1 bottom-14 w-8 md:right-52 lg:right-96" />
+          <OrangeStar className="absolute -bottom-6 w-5 md:left-52 lg:left-96" />
         </div>
-        <div className="left-96 top-2 h-12 w-6">
-          <OrangeStar />
-        </div>
-        {/* <OrangeStar className="h-8 w-6" /> */}
       </main>
       <div>
         <Footer />

@@ -19,18 +19,21 @@ const SearchInput = ({ className }: ISearchInput) => {
   return (
     <div className={`h-16 max-w-[305px] bg-search bg-no-repeat ${className}`}>
       <Form
-        className="flex h-16 items-center gap-1 pl-5 tracking-wide"
+        className="flex h-16 items-center pl-5 tracking-wide"
         onSubmit={onSubmit}
       >
-        <label htmlFor="search" className="font-condensed text-3xl uppercase">
+        <label
+          htmlFor="search"
+          className="pb-0 text-center font-condensed text-3xl uppercase"
+        >
           Search
         </label>
         <div className="flex-1">
-          <button className="-bottom-18 left-88 z-searchButton translate-x-0 transition-transform hover:translate-x-2 md:right-4 md:-bottom-48 lg:-bottom-4">
-            <SearchArrow />
+          <button className="absolute bottom-6 right-7 translate-x-0 transition-transform hover:translate-x-2 md:right-60 lg:right-96">
+            <SearchArrow className="w-8" />
           </button>
           <TextField
-            className="w-full border-b-4 border-dotted border-black bg-transparent px-1 text-base font-semibold outline-none"
+            className="mt-1 w-full border-b-4 border-dotted border-black bg-transparent px-2 text-xl font-semibold outline-none"
             name="search"
             id="search"
           />
