@@ -29,7 +29,7 @@ const SearchInput = ({ className }: ISearchInput) => {
           Search
         </label>
         <div className="flex-1">
-          <button className="absolute bottom-6 right-7 translate-x-0 transition-transform hover:translate-x-2 md:right-60 lg:right-96">
+          <button className="absolute bottom-6 right-7 translate-x-0 transition-transform hover:translate-x-2">
             <SearchArrow className="w-8" />
           </button>
           <TextField

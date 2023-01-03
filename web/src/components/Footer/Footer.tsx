@@ -11,7 +11,7 @@ const getCurrentYear = (): string => {
 const Footer = () => {
   return (
     <footer
-      className="border-t-2 border-black lg:w-8/12"
+      className="border-t-2 border-black lg:mx-auto lg:w-8/12"
       data-testid="copyright"
     >
       <nav className="w-full py-5 font-semibold">
@@ -54,16 +54,24 @@ const Footer = () => {
         </ul>
       </nav>
       <div className="flex items-center justify-center gap-2 border-t-2 border-black pt-5 font-condensed text-2xl uppercase">
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
+          <div>
+            <span className="hidden h-0.5 border-t-2 p-0.5 lg:ml-6 lg:block lg:w-20"></span>
+            <span className="hidden h-0.5 border-b-2 p-0.5 lg:ml-10 lg:block lg:w-16"></span>
+          </div>
           Copyright &copy;{getCurrentYear()}.{' '}
-          <span className="h-0.5 w-6 border-y-2 p-1 "></span>
+          <span className="h-0.5 w-6 border-y-2 p-1 md:w-60 lg:w-8"></span>
         </div>
         <a href="http://codingzeal.com" target="_blank" rel=" noreferrer">
           <ZealLogoAlt />
         </a>
-        <div className="flex gap-2">
-          <span className="h-0.5 w-4 border-y-2 p-1"></span>
+        <div className="flex items-center gap-2">
+          <span className="h-0.5 w-4 border-y-2 p-1 md:w-60 lg:w-10"></span>
           <div>All Rights Reserved.</div>
+          <div>
+            <span className="hidden h-0.5 border-t-2 p-0.5 lg:block lg:w-20"></span>
+            <span className="hidden h-0.5 border-b-2 p-0.5 lg:block lg:w-16"></span>
+          </div>
         </div>
       </div>
     </footer>
