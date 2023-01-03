@@ -61,8 +61,8 @@ const LoginPage = () => {
             <AMAanytime className="mx-auto w-52 md:w-96 lg:absolute lg:-top-16 lg:w-[32rem]" />
             <SlantedQuestionMark className="absolute top-3 left-2 w-10 md:top-12 md:-left-8 md:w-12 lg:left-96 lg:-top-32 lg:w-8" />
             <QuestionMarkBubble className="absolute right-1 -bottom-20 w-20 md:-right-16 md:-bottom-16 md:w-40 lg:-right-[64rem] lg:-top-28" />
-            <QuestionBubbleRight className="absolute hidden lg:-right-[78rem] lg:-top-4 lg:block" />
-            <QuestionBubbleLeft className="absolute hidden lg:-left-48 lg:-top-8 lg:block" />
+            <QuestionBubbleRight className="absolute hidden lg:-right-[78rem] lg:-top-4 lg:block lg:w-60" />
+            <QuestionBubbleLeft className="absolute hidden lg:-left-44 lg:-top-8 lg:block lg:w-80" />
           </div>
           <h1 className="mx-auto -mt-2 inline-block bg-bg p-2 font-condensed text-7xl uppercase text-eternity md:mt-2 lg:absolute lg:-mt-12 lg:px-8">
             Sign In
