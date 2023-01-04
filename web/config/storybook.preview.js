@@ -1,2 +1,8 @@
-import '../src/scaffold.css'
-import '../src/index.css'
+export const decorators = [
+  (Story) => {
+    return (
+      <div style={{ margin: '48px' }}>
+        <Story />
+      </div>
+    )},
+]

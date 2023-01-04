@@ -10,11 +10,11 @@ const getCurrentYear = (): string => {
 const Footer = () => {
   return (
     <footer
-      className="text-gray-500 text-center text-sm italic"
+      className="fixed bottom-0 p-5 w-full"
       data-testid="copyright"
     >
-      <nav className="footer-nav w-full py-5 text-center font-semibold">
-        <ul className="flex flex-wrap justify-center gap-2">
+      <nav className="footer-nav w-full pb-2 text-center font-semibold">
+        <ul className="flex flex-wrap justify-center gap-4">
           <li>
             <Link to={routes.about()}>About</Link>
           </li>
@@ -35,7 +35,7 @@ const Footer = () => {
           </li>
         </ul>
       </nav>
-      <div>
+      <div className="text-center">
         Copyright &copy;{getCurrentYear()}.{' '}
         <a
           href="http://codingzeal.com"

@@ -28,6 +28,7 @@
   },
   "packageManager": "yarn@3.2.1",
   "scripts": {
+    "storybook": "yarn rw storybook --no-manager-cache",
     "start": "node index.js",
     "build": "yarn rw build",
     "lint": "yarn eslint && yarn pretty",

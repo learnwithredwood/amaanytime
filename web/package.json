@@ -24,6 +24,9 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.28.1",
+    "@storybook/addon-a11y": "^6.5.15",
+    "@storybook/addons": "^6.5.15",
+    "@storybook/theming": "^6.5.15",
     "@testing-library/user-event": "^14.4.3",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
