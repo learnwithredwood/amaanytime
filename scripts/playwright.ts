@@ -16,6 +16,8 @@ import { argv } from 'node:process'
 const DATABASE_URL = 'postgresql://postgres:test@localhost:5433/redwood_test'
 process.env.DATABASE_URL = DATABASE_URL
 
+const APP_NAME = process.env.APP_NAME || 'redwood-app'
+
 const shellenv: Record<string, string> = {
   ...process.env,
   DATABASE_URL,
@@ -68,7 +70,7 @@ function _removeContainer() {
 
 function _getVolume() {
   return _exec(
-    'docker volume ls --filter name=redwood_test --format "{{.Name}}"'
+    `docker volume ls --filter name=redwood_test --format "{{.Name}}"`
   )
 }
 
@@ -81,7 +83,7 @@ function _removeVolume() {
 
 function _resetDatabase() {
   console.log('Resetting database...')
-  _destroy()
+  _destroy() 
   _startContainer()
   _buildRedwood()
   _migrate()
@@ -112,7 +114,7 @@ function _seed() {
 
 function _containerName() {
   return _exec(
-    'docker ps --filter name=redwood-template-app-testdb --format "{{.Names}}"'
+    `docker ps --filter name=${APP_NAME}-testdb --format "{{.Names}}"`
   )
 }
 
