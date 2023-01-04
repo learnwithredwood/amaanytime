@@ -7,6 +7,7 @@ import VerificationPage from './VerificationPage'
 
 describe('VerificationPage', () => {
   it('renders successfully', () => {
+    mockGraphQLMutation('VerifyEmailMutation', (_variables) => ({}))
     expect(() => {
       render(<VerificationPage verifyToken="monkey" />)
     }).not.toThrow()
