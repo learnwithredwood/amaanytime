@@ -55,7 +55,6 @@ const FeedBlock = ({ question }: FeedBlockProps) => {
       <div
         key={question.id}
         className="text-gray-500 mt-0.5 flex w-96 space-x-4 border px-4 align-top text-sm"
-        // className="box-border absolute w-3/4"
       >
         {/* Avatar */}
         <div className="flex-none py-10">
