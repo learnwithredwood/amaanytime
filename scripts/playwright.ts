@@ -83,7 +83,7 @@ function _removeVolume() {
 
 function _resetDatabase() {
   console.log('Resetting database...')
-  _destroy() 
+  _destroy()
   _startContainer()
   _buildRedwood()
   _migrate()
