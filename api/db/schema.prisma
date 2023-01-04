@@ -18,6 +18,7 @@ model User {
   pronouns            String?
   active              Boolean      @default(true)
   admin               Boolean      @default(false)
+  avatar              String?
   hashedPassword      String
   salt                String
   resetToken          String?
@@ -26,6 +27,13 @@ model User {
   createdAt           DateTime     @default(now())
   memberships         Membership[]
   verifyToken         String?
+
+  questionsAsked    Question[] @relation("QuestionAskedBy")
+  questionsAnswered Question[] @relation("QuestionAnsweredBy")
+  bookmarks         Bookmark[]
+  likes             Like[]
+  askAgains         AskAgain[]
+  votes             Vote[]
 }
 
 model Membership {
@@ -64,4 +72,76 @@ model Role {
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @default(now()) @updatedAt
   membershipRoles MembershipRole[]
+}
+
+model Question {
+  id               Int        @id @default(autoincrement())
+  question         String
+  answer           String?
+  order            Int?
+  pinned           Boolean?   @default(false)
+  askedOn          DateTime?  @default(now())
+  updatedOn        DateTime?  @updatedAt
+  notGoingToAnswer Boolean?   @default(false)
+  flag             Boolean?   @default(false)
+  archive          Boolean?   @default(false)
+  askAgains        AskAgain[]
+  bookmarks        Bookmark[]
+  likes            Like[]
+  votes            Vote[]
+
+  parentQuestion   Question?  @relation("ThreadedQuestions", fields: [parentQuestionId], references: [id])
+  parentQuestionId Int?       @unique
+  questions        Question[] @relation("ThreadedQuestions")
+  askedBy          User       @relation("QuestionAskedBy", fields: [askedByUserId], references: [id])
+  askedByUserId    String     @db.Uuid()
+  answeredBy       User?      @relation("QuestionAnsweredBy", fields: [answeredByUserId], references: [id])
+  answeredByUserId String?    @db.Uuid()
+}
+
+model Bookmark {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.Uuid()
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id])
+  createdOn  DateTime @default(now())
+
+  @@unique([userId, questionId])
+}
+
+model AskAgain {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.Uuid()
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId Int
+
+  @@unique([userId, questionId])
+}
+
+model Vote {
+  id         Int           @id @default(autoincrement())
+  user       User          @relation(fields: [userId], references: [id])
+  userId     String        @db.Uuid()
+  direction  VoteDirection
+  question   Question      @relation(fields: [questionId], references: [id])
+  questionId Int
+
+  @@unique([userId, questionId])
+}
+
+enum VoteDirection {
+  UP
+  DOWN
+}
+
+model Like {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.Uuid()
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId Int
+
+  @@unique([userId, questionId])
 }

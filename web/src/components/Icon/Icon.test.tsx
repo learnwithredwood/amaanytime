@@ -5,7 +5,7 @@ import { Icon } from './Icon'
 describe('Icon', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<Icon name="location" />)
+      render(<Icon name="bookmark" />)
     }).not.toThrow()
   })
 })
