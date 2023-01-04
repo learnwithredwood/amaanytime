@@ -1,10 +1,9 @@
-import { useRef } from 'react'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { AMAanytime } from 'web/src/components/ImageComponents/AMAanytime/AMAanytime'
 
 import { useAuth } from '@redwoodjs/auth'
-import { Form, Submit, TextField } from '@redwoodjs/forms'
+import { Form, Submit } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
@@ -21,6 +20,7 @@ import { SearchInput } from 'src/components/SearchInput'
 
 const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
+  const [mount, setMount] = useState(false)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -30,9 +30,8 @@ const LoginPage = () => {
 
   const usernameRef = useRef<HTMLInputElement>()
   useEffect(() => {
-    usernameRef.current.focus()
+    setMount(true)
   }, [])
-
   const onSubmit = async (data) => {
     const response = await logIn({ ...data })
 
@@ -47,7 +46,9 @@ const LoginPage = () => {
       toast.success('Welcome back!')
     }
   }
-
+  if (mount && usernameRef?.current) {
+    usernameRef.current.focus()
+  }
   return (
     <>
       <MetaTags title="Login" />
@@ -68,6 +69,7 @@ const LoginPage = () => {
             Sign In
           </h1>
           <BlueStar className="absolute -top-10 left-1 w-12 md:left-10 md:-top-52 md:w-10 lg:top-80 lg:left-80" />
+
           <Form
             onSubmit={onSubmit}
             className="px-5 pb-5 text-left md:px-10 lg:ml-auto lg:max-w-lg lg:pt-16"
@@ -85,8 +87,7 @@ const LoginPage = () => {
               }}
               required={true}
             />
-
-            <TextField className="hidden" name="username" ref={usernameRef} />
+            {/* <TextField className="" name="username" ref={usernameRef} /> */}
 
             <div className="forgot-link absolute right-12">
               <Link

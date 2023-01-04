@@ -20,7 +20,7 @@ export interface AmaTextFieldProps {
   validation?: RegisterOptions
 }
 
-const AmaTextField = forwardRef((props: AmaTextFieldProps, ref) => {
+const AmaTextField = forwardRef((props: AmaTextFieldProps, ref: any) => {
   const {
     autoComplete,
     className,
@@ -62,6 +62,7 @@ const AmaTextField = forwardRef((props: AmaTextFieldProps, ref) => {
       </label>
       <div className={`input-wrapper ${className}`} data-testid="inputWrapper">
         <input
+          {...register}
           autoComplete={autoComplete}
           className={inputClassName}
           data-testid="input"
@@ -73,7 +74,6 @@ const AmaTextField = forwardRef((props: AmaTextFieldProps, ref) => {
           placeholder={placeholder}
           ref={ref}
           tabIndex={tabIndex}
-          {...register}
         />
       </div>
       <FieldError name={name} className="rw-field-error" />
