@@ -32,6 +32,7 @@ const LoginPage = () => {
   useEffect(() => {
     setMount(true)
   }, [])
+
   const onSubmit = async (data) => {
     const response = await logIn({ ...data })
 
@@ -49,6 +50,7 @@ const LoginPage = () => {
   if (mount && usernameRef?.current) {
     usernameRef.current.focus()
   }
+
   return (
     <>
       <MetaTags title="Login" />
@@ -87,7 +89,6 @@ const LoginPage = () => {
               }}
               required={true}
             />
-            {/* <TextField className="" name="username" ref={usernameRef} /> */}
 
             <div className="forgot-link absolute right-12">
               <Link

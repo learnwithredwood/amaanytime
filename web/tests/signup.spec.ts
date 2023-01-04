@@ -5,6 +5,7 @@ import { db } from '../../api/src/lib/db'
 const MOCK_USER = {
   email: 'snap@cracklepop.com',
   username: 'snapcrackle',
+  password: 'example',
 }
 
 test.afterAll(async () => {
@@ -17,11 +18,11 @@ test.describe('signup as a user', () => {
 
     await page.getByText('Login').click()
     await page.waitForURL('/login')
-    const loginTitle = page.locator('.rw-heading-secondary')
+    const loginTitle = page.locator('h1')
     expect(loginTitle)
-    await expect(loginTitle).toHaveText('Login')
+    await expect(loginTitle).toHaveText('Sign In')
 
-    await page.getByText('Sign up!').click()
+    await page.getByText('Sign up').click()
     await page.waitForURL('/signup')
 
     const signupTitle = page.locator('.rw-heading-secondary')
@@ -38,7 +39,7 @@ test.describe('signup as a user', () => {
 
     const passwordInput = page.locator('input[name="password"]')
     await passwordInput.click()
-    await passwordInput.fill('example')
+    await passwordInput.fill(MOCK_USER.password)
 
     await page.locator('button:has-text("Sign Up")').click()
     await page.waitForURL('/')
