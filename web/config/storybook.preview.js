@@ -1,8 +1,9 @@
+import React from 'react'
+
 export const decorators = [
-  (Story) => {
-    return (
-      <div style={{ margin: '48px' }}>
-        <Story />
-      </div>
-    )},
+  (Story) => (
+    <div style={{ margin: '48px' }}>
+      <Story />
+    </div>
+  ),
 ]

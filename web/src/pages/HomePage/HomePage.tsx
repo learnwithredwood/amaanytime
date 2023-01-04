@@ -1,6 +1,6 @@
 import { MetaTags } from '@redwoodjs/web'
 
-import { AMALogo } from 'src/components/Home/RetroLogo/AMALogo'
+import { AMALogo } from 'src/components/Footer/Home/RetroLogo/AMALogo'
 
 function HomePage() {
   return (

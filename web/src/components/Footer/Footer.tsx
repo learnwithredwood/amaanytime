@@ -9,10 +9,7 @@ const getCurrentYear = (): string => {
 
 const Footer = () => {
   return (
-    <footer
-      className="fixed bottom-0 p-5 w-full"
-      data-testid="copyright"
-    >
+    <footer className="fixed bottom-0 w-full p-5" data-testid="copyright">
       <nav className="footer-nav w-full pb-2 text-center font-semibold">
         <ul className="flex flex-wrap justify-center gap-4">
           <li>
