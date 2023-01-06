@@ -1,4 +1,3 @@
-import { Icon } from 'src/components/Icon'
 import { formatRelativeDate } from 'src/utils/DateHelpers'
 
 interface FeedBlockProps {
@@ -27,28 +26,6 @@ const FeedBlock = ({ question }: FeedBlockProps) => {
   const askedByName = question?.askedBy?.name
   const askedByUsername = question?.askedBy?.username
   const askedByAvatar = question?.askedBy?.avatar
-
-  const Links = () => {
-    return (
-      <ul className="inline-flex w-full justify-between pt-6">
-        <li>
-          <Icon name="comment" height="12px" />
-        </li>
-        <li>
-          <Icon name="heart" height="12px" />
-        </li>
-        <li>
-          <Icon name="bookmark" height="12px" />
-        </li>
-        <li>
-          <Icon name="reuse" height="12px" />
-        </li>
-        <li>
-          <Icon name="share" height="12px" />
-        </li>
-      </ul>
-    )
-  }
 
   return (
     <>
@@ -85,8 +62,6 @@ const FeedBlock = ({ question }: FeedBlockProps) => {
           <div className="prose prose-sm text-gray-500 mt-4 max-w-none">
             {question.answer}
           </div>
-          {/* links */}
-          <Links />
         </div>
       </div>
     </>
