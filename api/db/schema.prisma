@@ -30,10 +30,6 @@ model User {
 
   questionsAsked    Question[] @relation("QuestionAskedBy")
   questionsAnswered Question[] @relation("QuestionAnsweredBy")
-  bookmarks         Bookmark[]
-  likes             Like[]
-  askAgains         AskAgain[]
-  votes             Vote[]
 }
 
 model Membership {
@@ -85,10 +81,6 @@ model Question {
   notGoingToAnswer Boolean?   @default(false)
   flag             Boolean?   @default(false)
   archive          Boolean?   @default(false)
-  askAgains        AskAgain[]
-  bookmarks        Bookmark[]
-  likes            Like[]
-  votes            Vote[]
 
   parentQuestion   Question?  @relation("ThreadedQuestions", fields: [parentQuestionId], references: [id])
   parentQuestionId Int?       @unique
@@ -97,51 +89,4 @@ model Question {
   askedByUserId    String     @db.Uuid()
   answeredBy       User?      @relation("QuestionAnsweredBy", fields: [answeredByUserId], references: [id])
   answeredByUserId String?    @db.Uuid()
-}
-
-model Bookmark {
-  id         Int      @id @default(autoincrement())
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String   @db.Uuid()
-  questionId Int
-  question   Question @relation(fields: [questionId], references: [id])
-  createdOn  DateTime @default(now())
-
-  @@unique([userId, questionId])
-}
-
-model AskAgain {
-  id         Int      @id @default(autoincrement())
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String   @db.Uuid()
-  question   Question @relation(fields: [questionId], references: [id])
-  questionId Int
-
-  @@unique([userId, questionId])
-}
-
-model Vote {
-  id         Int           @id @default(autoincrement())
-  user       User          @relation(fields: [userId], references: [id])
-  userId     String        @db.Uuid()
-  direction  VoteDirection
-  question   Question      @relation(fields: [questionId], references: [id])
-  questionId Int
-
-  @@unique([userId, questionId])
-}
-
-enum VoteDirection {
-  UP
-  DOWN
-}
-
-model Like {
-  id         Int      @id @default(autoincrement())
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String   @db.Uuid()
-  question   Question @relation(fields: [questionId], references: [id])
-  questionId Int
-
-  @@unique([userId, questionId])
 }

@@ -1,38 +1,15 @@
+import { FindQuestionById } from 'types/graphql'
+
 import { formatRelativeDate } from 'src/utils/DateHelpers'
 
-interface FeedBlockProps {
-  question: {
-    id: number
-    answer?: string | null
-    archive: boolean
-    askedBy: {
-      name: string
-      username: string
-      avatar: string
-    }
-    askedByUserId: string
-    askedOn: string
-    flag: boolean
-    handle: string
-    notGoingToAnswer: boolean
-    order?: string | null
-    pinned: boolean
-    question: string
-    updatedOn: string
-  }
-}
-
-const FeedBlock = ({ question }: FeedBlockProps) => {
+const FeedBlock = ({ question }: FindQuestionById) => {
   const askedByName = question?.askedBy?.name
   const askedByUsername = question?.askedBy?.username
   const askedByAvatar = question?.askedBy?.avatar
 
   return (
     <>
-      <div
-        key={question.id}
-        className="text-gray-500 mt-0.5 flex w-96 space-x-4 border px-4 align-top text-sm"
-      >
+      <div className="text-gray-500 mt-0.5 flex w-96 space-x-4 border px-4 align-top text-sm">
         {/* Avatar */}
         <div className="flex-none py-10">
           <img
