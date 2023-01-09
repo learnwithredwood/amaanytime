@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         bg: "url('./images/bg.jpg')",
+        search: "url('web/src/images/bg__search.svg')",
       },
       backgroundSize: {
         half: '50% 100%',
@@ -22,6 +23,7 @@ module.exports = {
         eternity: '##2d2d2b', // almost black
         sonicSilver: '#747474', // mid gray
       },
+      spacing: {},
     },
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],

@@ -5,11 +5,11 @@ test.describe('forgot password', () => {
     await page.goto('/')
     await page.getByText('Login').click()
     await page.waitForURL('/login')
-    const loginTitle = page.locator('.rw-heading-secondary')
+    const loginTitle = page.locator('h1')
     await expect(loginTitle).toBeVisible()
-    await expect(loginTitle).toHaveText('Login')
+    await expect(loginTitle).toHaveText('Sign In')
 
-    await page.getByText('Forgot Password?').click()
+    await page.getByText('Forgot password?').click()
     await page.waitForURL('/forgot-password')
 
     const forgotPasswordTitle = page.locator('.rw-heading-secondary')
