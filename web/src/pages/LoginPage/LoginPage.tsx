@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { AMAanytime } from 'web/src/components/ImageComponents/AMAanytime/AMAanytime'
 
@@ -20,7 +20,6 @@ import { SearchInput } from 'src/components/SearchInput'
 
 const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
-  const [mount, setMount] = useState(false)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -29,9 +28,6 @@ const LoginPage = () => {
   }, [isAuthenticated])
 
   const usernameRef = useRef<HTMLInputElement>()
-  useEffect(() => {
-    setMount(true)
-  }, [])
 
   const onSubmit = async (data) => {
     const response = await logIn({ ...data })
@@ -47,7 +43,8 @@ const LoginPage = () => {
       toast.success('Welcome back!')
     }
   }
-  if (mount && usernameRef?.current) {
+
+  if (usernameRef?.current) {
     usernameRef.current.focus()
   }
 
@@ -72,15 +69,11 @@ const LoginPage = () => {
           </h1>
           <BlueStar className="absolute -top-10 left-1 w-12 md:left-10 md:-top-52 md:w-10 lg:top-80 lg:left-80" />
 
-          <Form
-            onSubmit={onSubmit}
-            className="px-5 pb-5 text-left md:px-10 lg:ml-auto lg:max-w-lg lg:pt-16"
-          >
+          <Form className="px-5 pb-5 text-left md:px-10 lg:ml-auto lg:max-w-lg lg:pt-16">
             <AmaTextField
               name="username"
               label="Username"
               tabIndex={0}
-              ref={usernameRef}
               validation={{
                 required: {
                   value: true,
@@ -105,6 +98,7 @@ const LoginPage = () => {
               label="Password"
               tabIndex={0}
               type="password"
+              ref={usernameRef}
               validation={{
                 required: {
                   value: true,
@@ -115,7 +109,10 @@ const LoginPage = () => {
             />
 
             <div className="md:flex md:flex-row-reverse md:items-center md:justify-between lg:mb-2 lg:items-center lg:justify-between">
-              <Submit className="h-12 w-full cursor-pointer rounded-3xl bg-punch font-slab text-base font-bold uppercase text-white hover:bg-veridianGreen md:w-56 lg:h-9 lg:w-28">
+              <Submit
+                onSubmit={onSubmit}
+                className="h-12 w-full cursor-pointer rounded-3xl bg-punch font-slab text-base font-bold uppercase text-white hover:bg-veridianGreen md:w-56 lg:h-9 lg:w-28"
+              >
                 Login
               </Submit>
               <div className="pt-6 text-center text-base md:pt-0">
