@@ -1,84 +1,129 @@
-import { forwardRef } from 'react'
-
 import {
   FieldError,
-  useErrorStyles,
-  useRegister,
-  RegisterOptions,
+  InputField,
+  InputFieldProps,
+  Label,
+  LabelProps,
+  PasswordField,
 } from '@redwoodjs/forms'
+import { Link, routes } from '@redwoodjs/router'
 
-export interface AmaTextFieldProps {
-  autoComplete?: string
-  className?: string
-  defaultValue?: string
-  label: string
+export interface IInputProps {
+  type?: InputTypes
+  inputProps?: InputFieldProps
+  labelProps?: LabelProps
   name: string
-  placeholder?: string
-  type?: 'text' | 'tel' | 'url' | 'password' | 'email'
+  label?: string
+  value?: string
   required?: boolean
   tabIndex?: number
-  validation?: RegisterOptions
+  placeholder?: string
 }
 
-const AmaTextField = forwardRef((props: AmaTextFieldProps, ref: any) => {
-  const {
-    autoComplete,
-    className,
-    defaultValue = '',
-    label,
-    name,
-    placeholder = '',
-    type = 'text',
-    required = false,
-    tabIndex,
-    validation,
-  } = props
+export enum InputTypes {
+  TEXT,
+  PASSWORD,
+}
 
-  const register = useRegister({
-    name,
-    validation: { ...validation, required },
-  })
+const INPUT_CLASSES =
+  'z-0 relative left-1 top-1 w-full border border-neutral-800 bg-transparent p-2'
 
-  const { className: labelClassName, style: labelStyle } = useErrorStyles({
-    className: ``,
-    errorClassName: `rw-label rw-label-error`,
-    name,
-  })
+const ERROR_CLASSES =
+  'z-0 relative left-0.5 top-0.5 w-full border border-red-500 bg-transparent p-2'
 
-  const { className: inputClassName, style: inputStyle } = useErrorStyles({
-    className: ``,
-    errorClassName: `rw-input rw-input-error`,
-    name,
-  })
-
+export function AmaTextField(props: IInputProps) {
   return (
-    <div className="field">
-      <label
-        htmlFor={`input-${name}`}
-        className={labelClassName}
-        style={labelStyle}
-      >
-        {label}
-      </label>
-      <div className={`input-wrapper ${className}`} data-testid="inputWrapper">
-        <input
-          {...register}
-          autoComplete={autoComplete}
-          className={inputClassName}
-          data-testid="input"
-          defaultValue={defaultValue}
-          style={inputStyle}
-          type={type}
-          id={`input-${name}`}
-          name={name}
-          placeholder={placeholder}
-          ref={ref}
-          tabIndex={tabIndex}
-        />
+    <div>
+      {props.label && <AmaLabel {...props} />}
+      <div className="bg-white">
+        {props.type === InputTypes.PASSWORD ? (
+          <PasswordInput {...props} />
+        ) : (
+          <TextInput {...props} />
+        )}
       </div>
-      <FieldError name={name} className="rw-field-error" />
+      <FieldError name={props.name} className="rw-field-error" />
     </div>
   )
-})
+}
 
-export { AmaTextField }
+const AmaLabel = (props: IInputProps) => {
+  return (
+    <>
+      {props.type === InputTypes.PASSWORD ? (
+        <ForgotPasswordLabel {...props} />
+      ) : (
+        <DefaultLabel {...props} />
+      )}
+    </>
+  )
+}
+
+const DefaultLabel = (props: IInputProps) => (
+  <Label
+    data-testid={`input-label-${props.name}`}
+    name={props.label}
+    className="text-xs"
+    {...props.labelProps}
+  />
+)
+
+function TextInput(props: IInputProps) {
+  return (
+    <InputField
+      data-testid={`input-field-${props.name}`}
+      className={INPUT_CLASSES}
+      errorClassName={ERROR_CLASSES}
+      name={props.name}
+      value={props.value}
+      validation={{
+        required: {
+          value: props.required,
+          message: `${props.name} is required!`,
+        },
+      }}
+      placeholder={props.placeholder || ''}
+      tabIndex={props.tabIndex}
+      {...props.inputProps}
+    />
+  )
+}
+
+const ForgotPasswordLabel = (props: IInputProps) => {
+  return (
+    <div
+      data-testid={`password-label-${props.name}`}
+      className="align-center flex justify-between"
+    >
+      <DefaultLabel {...props} />
+      <Link
+        to={routes.forgotPassword()}
+        className="text-xs underline hover:no-underline"
+      >
+        Forgot password?
+      </Link>
+    </div>
+  )
+}
+
+function PasswordInput(props: IInputProps) {
+  return (
+    <>
+      <PasswordField
+        data-testid={`password-input-${props.name}`}
+        className={INPUT_CLASSES}
+        errorClassName={ERROR_CLASSES}
+        name={props.name}
+        validation={{
+          required: {
+            value: props.required,
+            message: `${props.name} is required!`,
+          },
+        }}
+        placeholder={props.placeholder || ''}
+        tabIndex={props.tabIndex}
+        {...props.inputProps}
+      />
+    </>
+  )
+}

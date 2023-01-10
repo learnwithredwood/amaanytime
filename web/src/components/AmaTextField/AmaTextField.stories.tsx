@@ -1,41 +1,38 @@
-// import { Form } from '@redwoodjs/forms'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-// import { AmaTextField, AmaTextFieldProps } from './AmaTextField'
-// import {
-//   minimum,
-//   placeholder,
-//   username,
-//   website,
-//   withDefaultValue,
-// } from './AmaTextField.mocks'
+import { Form } from '@redwoodjs/forms'
 
-// const Template = (args: AmaTextFieldProps) => (
-//   <Form>
-//     <AmaTextField {...args} />
-//   </Form>
-// )
+import { AmaTextField } from './AmaTextField'
 
-// export const Minimum = Template.bind({})
-// Minimum.args = { ...minimum }
+const Template: ComponentStory<typeof AmaTextField> = (args) => (
+  <AmaTextField {...args} />
+)
 
-// export const Username = Template.bind({})
-// Username.args = { ...username }
+export const Errored = Template.bind({})
 
-// export const WithDefaultValue = Template.bind({})
-// WithDefaultValue.args = { ...withDefaultValue }
-
-// export const Placeholder = Template.bind({})
-// Placeholder.args = { ...placeholder }
-
-// export const UrlType = Template.bind({})
-// UrlType.args = { ...website }
-
-export const AmaTextField = () => {
-  return (
-    <div>
-      <h2>{'AmaTextField'}</h2>
-    </div>
-  )
+Errored.args = {
+  label: 'username',
+  value: '',
+  name: 'username',
+  decorators: [(Story) => <Form onSubmit={() => {}}>{Story}</Form>],
 }
 
-export default { title: 'Form/AmaTextField', component: AmaTextField }
+export const Default = Template.bind({})
+
+Default.args = {
+  label: 'username',
+  value: '',
+  name: 'username',
+}
+
+export default {
+  title: 'Form/AmaTextField',
+  component: AmaTextField,
+  decorators: [
+    (Story) => (
+      <Form>
+        <Story />
+      </Form>
+    ),
+  ],
+} as ComponentMeta<typeof AmaTextField>

@@ -1,67 +1,47 @@
 import { Form } from '@redwoodjs/forms'
 import { render, screen } from '@redwoodjs/testing/web'
 
-import { AmaTextField } from './AmaTextField'
-import {
-  minimum,
-  website,
-  withDefaultValue,
-  placeholder,
-  username,
-} from './AmaTextField.mocks'
+import { AmaTextField, InputTypes, IInputProps } from './AmaTextField'
 
-// testing validation is handled at the form level
-// But, for reference: https://redwoodjs.com/docs/testing#testing-the-form
+const renderComponent = (props: IInputProps, formProps = {}) =>
+  render(
+    <Form {...formProps}>
+      <AmaTextField {...props} />
+    </Form>
+  )
 
 describe('AmaTextField', () => {
-  it('renders successfully', () => {
-    expect(() => {
-      render(
-        <Form>
-          <AmaTextField {...minimum} />
-        </Form>
-      )
-    }).not.toThrow()
-  })
-
-  // actual string validation is handled through TypeScript, this is just to
-  // make sure that the attribute is being applied correctly
   it('can change the input type', () => {
-    render(
-      <Form>
-        <AmaTextField {...website} type="url" />
-      </Form>
-    )
-    expect(screen.getByTestId('input')).toHaveAttribute('type', 'url')
+    renderComponent({
+      name: 'foo',
+      type: InputTypes.PASSWORD,
+    })
+    expect(screen.getByTestId('password-input-foo')).toBeInTheDocument()
   })
 
-  it('can handle a default value', () => {
-    render(
-      <Form>
-        <AmaTextField {...withDefaultValue} />
-      </Form>
-    )
-    expect(screen.getByTestId('input')).toHaveValue(
-      withDefaultValue.defaultValue
-    )
+  it('shows a label if you give it a label prop', () => {
+    renderComponent({
+      name: 'foobar',
+    })
+
+    expect(screen.queryByTestId('input-label-foobar')).not.toBeInTheDocument()
+
+    renderComponent({
+      name: 'foo',
+      label: 'bar',
+    })
+    expect(screen.getByTestId('input-label-foo')).toBeInTheDocument()
   })
-  it('can handle a placeholder value', () => {
+
+  it('shows the password label when type is password and there s label', () => {
     render(
       <Form>
-        <AmaTextField {...placeholder} />
+        <AmaTextField name="foo" type={InputTypes.PASSWORD} label="bar" />
       </Form>
     )
-    expect(screen.getByTestId('input')).toHaveAttribute(
-      'placeholder',
-      placeholder.placeholder
-    )
-  })
-  it('can take a custom class name', () => {
-    render(
-      <Form>
-        <AmaTextField {...username} />
-      </Form>
-    )
-    expect(screen.getByTestId('inputWrapper')).toHaveClass(username.className)
+    renderComponent({
+      name: 'foo',
+    })
+    expect(screen.getByTestId('password-label-foo')).toBeInTheDocument()
   })
 })

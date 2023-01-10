@@ -1,13 +1,7 @@
 import Question from './SlantedQuestionMark.svg'
 
-const SlantedQuestionMark = ({ className }) => {
-  return (
-    <Question
-      aria-labelledby="question-mark"
-      className={className}
-      role="img"
-    />
-  )
+const SlantedQuestionMark = ({ width = 50 }: { width?: number }) => {
+  return <Question width={width} aria-labelledby="question-mark" role="img" />
 }
 
 export { SlantedQuestionMark }

@@ -8,51 +8,65 @@ const getCurrentYear = (): string => {
   return year
 }
 
+const FOOTER_ITEMS = [
+  {
+    text: 'About',
+    link: () => routes.about(),
+  },
+  {
+    text: 'Invites',
+    link: () => routes.waitingList(),
+  },
+  {
+    text: 'Contact',
+    link: () => routes.contact(),
+  },
+  {
+    text: 'Privacy Policy',
+    link: () => routes.privacyPolicy(),
+  },
+  {
+    text: 'Terms and Conditions',
+    link: () => routes.termsAndConditions(),
+  },
+  {
+    text: 'Disclaimers',
+    link: () => routes.disclaimers(),
+  },
+]
+
+const renderFooterItems = () =>
+  FOOTER_ITEMS.map((item, i) => {
+    const n = FOOTER_ITEMS.length
+    return (
+      <div
+        key={item.text}
+        className="justify-centertext-xs flex items-center gap-3 font-semibold md:text-sm lg:text-lg"
+      >
+        <Link to={item.link()} className="">
+          {item.text}
+        </Link>
+        {i !== n - 1 && (
+          <span
+            style={{
+              height: '10px',
+              width: '10px',
+              background: 'black',
+              borderRadius: '50%',
+              display: 'inline-block',
+            }}
+          ></span>
+        )}
+      </div>
+    )
+  })
+
 const Footer = () => {
   return (
-    <footer
-      className="border-t-2 border-black lg:mx-auto lg:w-8/12"
-      data-testid="copyright"
-    >
-      <nav className="w-full py-5 font-semibold">
-        <ul className="flex flex-wrap justify-center p-3 text-center leading-10">
-          <li>
-            <Link className="py-3 px-1" to={routes.about()}>
-              About
-            </Link>
-          </li>
-          <span className="mx-2">•</span>
-          <li>
-            <Link className="py-3 px-1" to={routes.waitingList()}>
-              Invites
-            </Link>
-          </li>
-          <span className="mx-2">•</span>
-          <li>
-            <Link className="py-3 px-1" to={routes.contact()}>
-              Contact
-            </Link>
-          </li>
-          <span className="mx-2">•</span>
-          <li>
-            <Link className="py-3 px-1" to={routes.privacyPolicy()}>
-              Privacy Policy
-            </Link>
-          </li>
-          <span className="invisible md:visible md:mx-2">•</span>
-          <li>
-            <Link className="py-3 px-1" to={routes.termsAndConditions()}>
-              Terms and Conditions
-            </Link>
-          </li>
-          <span className="mx-2">•</span>
-          <li>
-            <Link className="py-3 px-1" to={routes.disclaimers()}>
-              Disclaimers
-            </Link>
-          </li>
-        </ul>
-      </nav>
+    <footer className="w-full border-t-2 border-black" data-testid="copyright">
+      <div className="flex w-full flex-wrap items-center justify-center gap-5 py-2 text-xs font-semibold md:text-sm lg:text-lg">
+        {renderFooterItems()}
+      </div>
       <div className="flex items-center justify-center gap-2 border-t-2 border-black pt-5 font-condensed text-2xl uppercase">
         <div className="flex items-center gap-2">
           <div>
