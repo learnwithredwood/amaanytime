@@ -71,22 +71,37 @@ model Role {
 }
 
 model Question {
-  id               Int        @id @default(autoincrement())
+  id               Int       @id @default(autoincrement())
   question         String
   answer           String?
   order            Int?
-  pinned           Boolean?   @default(false)
-  askedOn          DateTime?  @default(now())
-  updatedOn        DateTime?  @updatedAt
-  notGoingToAnswer Boolean?   @default(false)
-  flag             Boolean?   @default(false)
-  archive          Boolean?   @default(false)
+  pinned           Boolean?  @default(false)
+  askedOn          DateTime? @default(now())
+  updatedOn        DateTime? @updatedAt
+  notGoingToAnswer Boolean?  @default(false)
+  flag             Boolean?  @default(false)
+  archive          Boolean?  @default(false)
 
-  parentQuestion   Question?  @relation("ThreadedQuestions", fields: [parentQuestionId], references: [id])
-  parentQuestionId Int?       @unique
-  questions        Question[] @relation("ThreadedQuestions")
-  askedBy          User       @relation("QuestionAskedBy", fields: [askedByUserId], references: [id])
-  askedByUserId    String     @db.Uuid()
-  answeredBy       User?      @relation("QuestionAnsweredBy", fields: [answeredByUserId], references: [id])
-  answeredByUserId String?    @db.Uuid()
+  parentQuestion   Question?      @relation("ThreadedQuestions", fields: [parentQuestionId], references: [id])
+  parentQuestionId Int?           @unique
+  questions        Question[]     @relation("ThreadedQuestions")
+  askedBy          User           @relation("QuestionAskedBy", fields: [askedByUserId], references: [id])
+  askedByUserId    String         @db.Uuid()
+  answeredBy       User?          @relation("QuestionAnsweredBy", fields: [answeredByUserId], references: [id])
+  answeredByUserId String?        @db.Uuid()
+  tags             QuestionTags[]
+}
+
+model QuestionTags {
+  id         Int       @id @default(autoincrement())
+  question   Question? @relation(fields: [questionId], references: [id])
+  tag        Tag?      @relation(fields: [tagId], references: [id])
+  questionId Int?
+  tagId      Int?
+}
+
+model Tag {
+  id        Int            @id @default(autoincrement())
+  name      String         @unique
+  questions QuestionTags[]
 }
