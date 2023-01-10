@@ -41,18 +41,18 @@ export const deleteQuestion: MutationResolvers['deleteQuestion'] = ({ id }) => {
 }
 
 export const Question: QuestionRelationResolvers = {
-  askAgains: (_obj, { root }) => {
-    return db.question.findUnique({ where: { id: root?.id } }).askAgains()
-  },
-  bookmarks: (_obj, { root }) => {
-    return db.question.findUnique({ where: { id: root?.id } }).bookmarks()
-  },
-  likes: (_obj, { root }) => {
-    return db.question.findUnique({ where: { id: root?.id } }).likes()
-  },
-  votes: (_obj, { root }) => {
-    return db.question.findUnique({ where: { id: root?.id } }).votes()
-  },
+  // askAgains: (_obj, { root }) => {
+  //   return db.question.findUnique({ where: { id: root?.id } }).askAgains()
+  // },
+  // bookmarks: (_obj, { root }) => {
+  //   return db.question.findUnique({ where: { id: root?.id } }).bookmarks()
+  // },
+  // likes: (_obj, { root }) => {
+  //   return db.question.findUnique({ where: { id: root?.id } }).likes()
+  // },
+  // votes: (_obj, { root }) => {
+  //   return db.question.findUnique({ where: { id: root?.id } }).votes()
+  // },
   parentQuestion: (_obj, { root }) => {
     return db.question.findUnique({ where: { id: root?.id } }).parentQuestion()
   },

@@ -11,12 +11,6 @@ import { ProfileLayout } from './layouts/ProfileLayout'
 const Routes = () => {
   return (
     <Router>
-      <Set wrap={MainLayout}>
-        <Route path="/questions/new" page={QuestionNewQuestionPage} name="newQuestion" />
-        <Route path="/questions/{id:Int}/edit" page={QuestionEditQuestionPage} name="editQuestion" />
-        <Route path="/questions/{id:Int}" page={QuestionQuestionPage} name="question" />
-        <Route path="/questions" page={QuestionQuestionsPage} name="questions" />
-      </Set>
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
@@ -67,6 +61,12 @@ const Routes = () => {
               <Route path="/admin/users/{id}/edit" page={AdminUserEditUserPage} name="adminEditUser" />
               <Route path="/admin/users/{id}" page={AdminUserUserPage} name="adminUser" />
               <Route path="/admin/users" page={AdminUserUsersPage} name="adminUsers" />
+            </Set>
+            <Set wrap={MainLayout}>
+              <Route path="/questions/new" page={QuestionNewQuestionPage} name="newQuestion" />
+              <Route path="/questions/{id:Int}/edit" page={QuestionEditQuestionPage} name="editQuestion" />
+              <Route path="/questions/{id:Int}" page={QuestionQuestionPage} name="question" />
+              <Route path="/questions" page={QuestionQuestionsPage} name="questions" />
             </Set>
           </Set>
         </Private>
