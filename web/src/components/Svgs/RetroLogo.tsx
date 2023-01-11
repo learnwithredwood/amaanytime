@@ -1,6 +1,6 @@
 import { SVGProps } from 'react'
 
-export function ZealLogoBlackWhite(props?: SVGProps<SVGSVGElement>) {
+export function RetroLogo(props?: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 533 424"

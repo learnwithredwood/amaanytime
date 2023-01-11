@@ -1,6 +1,6 @@
 import { MetaTags } from '@redwoodjs/web'
 
-import { ZealLogo } from '../../components/ZealLogo'
+import { ZealLogo } from '../../components/Svgs'
 
 function HomePage() {
   return (

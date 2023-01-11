@@ -2,6 +2,7 @@ module.exports = {
   content: ['src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontSize: {
+      xs: '0.6rem',
       sm: '0.8rem',
       base: '1rem',
       xl: '1.25rem',
@@ -12,8 +13,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        bg: "url('./images/bg.jpg')",
-        search: "url('./images/bg__search.svg')",
+        bg: "url('./assets/bg.jpg')",
+        search: "url('./assets/bg__search.svg')",
       },
       backgroundSize: {
         half: '50% 100%',

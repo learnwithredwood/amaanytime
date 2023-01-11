@@ -1,3 +1,4 @@
+import { useDevice } from '../../hooks/useDevice'
 import { ZealLogoBlackWhite } from '../Svgs/ZealLogoBlackWhite'
 
 export const CopyrightInfo = () => (
@@ -12,16 +13,19 @@ export const CopyrightInfo = () => (
   </div>
 )
 
-const BlackBar = (props?: Record<string, string>) => (
-  <div
-    style={{
-      height: '2px',
-      background: 'black',
-      width: props?.w || '33px',
-      ...props,
-    }}
-  ></div>
-)
+const BlackBar = (props?: Record<string, string>) => {
+  const { isMobile } = useDevice()
+  return (
+    <div
+      style={{
+        height: '2px',
+        background: 'black',
+        width: isMobile ? '0' : props?.w || '5em',
+        ...props,
+      }}
+    ></div>
+  )
+}
 
 const LeftStaggeredBars = () => (
   <div
@@ -31,15 +35,15 @@ const LeftStaggeredBars = () => (
     }}
     className="flex flex-col gap-1"
   >
-    <BlackBar w="100px" />
-    <BlackBar w="80px" />
+    <BlackBar w="12em" />
+    <BlackBar w="9em" />
   </div>
 )
 
 const RightStaggeredBars = () => (
   <div className="flex flex-col gap-1">
-    <BlackBar w="100px" />
-    <BlackBar w="80px" />
+    <BlackBar w="12em" />
+    <BlackBar w="9em" />
   </div>
 )
 
@@ -51,5 +55,5 @@ const DoubleBars = () => (
 )
 
 const FooterText = ({ children }: { children: React.ReactNode }) => (
-  <div className="font-condensed text-sm uppercase">{children}</div>
+  <div className="font-condensed text-sm uppercase md:text-xl">{children}</div>
 )

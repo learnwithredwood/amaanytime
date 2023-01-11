@@ -5,7 +5,7 @@ const TAILWIND_BREAKPOINTS = {
   md: 768,
   lg: 1024,
   xl: 1280,
-  '2xl': 1536,
+  xxl: 1536,
 }
 
 interface Size {
@@ -16,11 +16,16 @@ interface Size {
 interface IDeviceInfo extends Size {
   browser: string
   isMobile: boolean
-  isSm: boolean
-  isMd: boolean
-  isLg: boolean
-  isXl: boolean
-  is2xl: boolean
+  smUp: boolean
+  smDown: boolean
+  mdUp: boolean
+  mdDown: boolean
+  lgUp: boolean
+  lgDown: boolean
+  xlUp: boolean
+  xlDown: boolean
+  xxlUp: boolean
+  xxlDown: boolean
 }
 
 export function useDevice(): IDeviceInfo {
@@ -48,21 +53,29 @@ export function useDevice(): IDeviceInfo {
   }, [])
 
   const { width } = windowSize
-  const isSm = width < TAILWIND_BREAKPOINTS.md
-  const isMd =
-    width > TAILWIND_BREAKPOINTS.sm && width < TAILWIND_BREAKPOINTS.lg
-  const isLg =
-    width > TAILWIND_BREAKPOINTS.md && width < TAILWIND_BREAKPOINTS.xl
-  const isXl =
-    width > TAILWIND_BREAKPOINTS.lg && width < TAILWIND_BREAKPOINTS['2xl']
-  const is2xl = width >= TAILWIND_BREAKPOINTS['2xl']
+  const smUp = width >= TAILWIND_BREAKPOINTS.sm
+  const smDown = width < TAILWIND_BREAKPOINTS.sm
+  const mdUp = width >= TAILWIND_BREAKPOINTS.md
+  const mdDown = width < TAILWIND_BREAKPOINTS.md
+  const lgUp = width >= TAILWIND_BREAKPOINTS.lg
+  const lgDown = width < TAILWIND_BREAKPOINTS.lg
+  const xlUp = width >= TAILWIND_BREAKPOINTS.xl
+  const xlDown = width < TAILWIND_BREAKPOINTS.xl
+  const xxlUp = width >= TAILWIND_BREAKPOINTS.xxl
+  const xxlDown = width < TAILWIND_BREAKPOINTS.xxl
   const isMobile = width < TAILWIND_BREAKPOINTS.md
+
   const curSizes = {
-    isSm,
-    isMd,
-    isLg,
-    isXl,
-    is2xl,
+    smUp,
+    smDown,
+    mdUp,
+    mdDown,
+    lgUp,
+    lgDown,
+    xlUp,
+    xlDown,
+    xxlUp,
+    xxlDown,
   }
 
   return {

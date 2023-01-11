@@ -5,10 +5,10 @@ import { navigate, routes } from '@redwoodjs/router'
 
 import { Footer } from 'src/components/Footer'
 
+import { useDevice } from '../../hooks/useDevice'
+
+import { DesktopBackground, MobileBackground } from './BackgroundLayers'
 import { LoginForm } from './LoginForm'
-import QuestionSvg from './questions_1440x1024.svg'
-import RetroLogoSvg from './retro_logo-1440x1024.svg'
-import StarsSvg from './stars_1440x1024.svg'
 
 const GRID_LAYOUT = {
   height: '100vh',
@@ -34,29 +34,21 @@ export default function LoginPage() {
   )
 }
 
-const ContentContainer = () => (
-  <div className="grid grid-cols-2">
-    <BackgroundLayers />
-    <Spacer />
-    <LoginForm />
-  </div>
-)
-
-const BACKGROUND_STYLE: React.CSSProperties = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  zIndex: -3,
+const ContentContainer = () => {
+  const { isMobile } = useDevice()
+  return (
+    <div className="grid grid-cols-1 items-center justify-center md:grid-cols-2">
+      {isMobile ? (
+        <MobileBackground />
+      ) : (
+        <>
+          <DesktopBackground />
+          <Spacer />
+        </>
+      )}
+      <LoginForm />
+    </div>
+  )
 }
-
-const BackgroundLayers = () => (
-  <>
-    <StarsSvg style={BACKGROUND_STYLE} />
-    <RetroLogoSvg style={BACKGROUND_STYLE} />
-    <QuestionSvg style={BACKGROUND_STYLE} />
-  </>
-)
 
 const Spacer = () => <div></div>

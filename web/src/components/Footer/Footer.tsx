@@ -1,13 +1,15 @@
 import { Link, routes } from '@redwoodjs/router'
 
+import { useDevice } from '../../hooks/useDevice'
+
 import { CopyrightInfo } from './CopyrightBar'
 
 export const Footer = () => {
   return (
-    <>
+    <div>
       <SiteLinks />
       <CopyrightInfo />
-    </>
+    </div>
   )
 }
 
@@ -18,7 +20,7 @@ const SiteLinks = () => (
         borderTop: 'solid 2px black',
         borderBottom: 'solid 2px black',
       }}
-      className="flex w-9/12 items-center justify-center gap-4 py-4"
+      className="flex w-11/12 items-center justify-between py-2 lg:w-11/12 lg:justify-center lg:gap-4 lg:py-4"
     >
       {FOOTER_ITEMS.flatMap((item) => [
         <Dot key={`${item.text}-dot`} />,
@@ -57,20 +59,31 @@ const FOOTER_ITEMS = [
   },
 ]
 
-const LinkItem = ({ children, link }) => (
-  <div className="text-sm font-semibold">
-    <Link to={link}>{children} </Link>
-  </div>
-)
+const LinkItem = ({ children, link }) => {
+  const { isMobile } = useDevice()
+  return (
+    <div
+      style={{
+        fontSize: isMobile ? '9px' : '0.8rem',
+      }}
+      className="font-semibold"
+    >
+      <Link to={link}>{children} </Link>
+    </div>
+  )
+}
 
-const Dot = () => (
-  <div
-    style={{
-      height: '5px',
-      width: '5px',
-      background: 'black',
-      borderRadius: '50%',
-      display: 'inline-block',
-    }}
-  ></div>
-)
+const Dot = () => {
+  const { isMobile } = useDevice()
+  return (
+    <div
+      style={{
+        height: '5px',
+        width: '5px',
+        background: 'black',
+        borderRadius: '50%',
+        display: isMobile ? 'none' : 'inline-block',
+      }}
+    ></div>
+  )
+}
