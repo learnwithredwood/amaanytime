@@ -1,6 +1,6 @@
-import { ZealLogo } from 'web/src/components/ZealLogo/ZealLogo'
-
 import { MetaTags } from '@redwoodjs/web'
+
+import { ZealLogo } from '../../components/ZealLogo'
 
 function HomePage() {
   return (
@@ -11,7 +11,7 @@ function HomePage() {
         className="m-10 flex flex-col items-center justify-center"
       >
         <h1 className="text-3xl">AMA Anytime!</h1>
-        <ZealLogo />
+        <ZealLogo width={300} />
       </div>
     </>
   )

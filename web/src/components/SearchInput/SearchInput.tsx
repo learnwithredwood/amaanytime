@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 
 import { Form, TextField } from '@redwoodjs/forms'
 
-import { SearchArrow } from '../ImageComponents/SearchArrow/SearchArrow'
+// import { SearchArrow } from '../Image/SearchArrow'
 
 interface ISearchInput {
   className?: string
@@ -30,7 +30,7 @@ const SearchInput = ({ className }: ISearchInput) => {
         </label>
         <div className="flex-1">
           <button className="absolute bottom-6 right-7 translate-x-0 transition-transform hover:translate-x-2">
-            <SearchArrow className="w-8" />
+            {/* <SearchArrow className="w-8" /> */}
           </button>
           <TextField
             className="mt-1 w-full border-b-4 border-dotted border-black bg-transparent px-2 text-xl font-semibold outline-none"
