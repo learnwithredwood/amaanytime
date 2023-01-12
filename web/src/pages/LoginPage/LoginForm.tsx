@@ -3,15 +3,14 @@ import { Form, Submit } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { toast } from '@redwoodjs/web/toast'
 
+import { AmaTextField } from 'src/components/AmaTextField'
 import { useDevice } from 'src/hooks/useDevice'
-
-import { AmaTextField } from '../../components/AmaTextField'
 
 export function LoginForm() {
   const { isMobile } = useDevice()
   const { isAuthenticated, logIn } = useAuth()
 
-  const handleSubmit = async (data) => {
+  const handleSubmit = async (data: Record<string, unknown>) => {
     const { message, error } = await logIn({ ...data })
     if (message) {
       toast(message)
@@ -23,7 +22,7 @@ export function LoginForm() {
     }
 
     if (error === 'User not Verified') {
-      navigate(routes.verificationReset({ email: data.email }))
+      navigate(routes.verificationReset({ email: data.email as string }))
       return
     }
 

@@ -4,8 +4,7 @@ import { useAuth } from '@redwoodjs/auth'
 import { navigate, routes } from '@redwoodjs/router'
 
 import { Footer } from 'src/components/Footer'
-
-import { useDevice } from '../../hooks/useDevice'
+import { useDevice } from 'src/hooks/useDevice'
 
 import { DesktopBackground, MobileBackground } from './BackgroundLayers'
 import { LoginForm } from './LoginForm'

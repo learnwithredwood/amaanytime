@@ -1,5 +1,5 @@
-import { useDevice } from '../../hooks/useDevice'
-import { ZealLogoBlackWhite } from '../Svgs/ZealLogoBlackWhite'
+import { ZealLogoBlackWhite } from 'src/components/Svgs/ZealLogoBlackWhite'
+import { useDevice } from 'src/hooks/useDevice'
 
 export const CopyrightInfo = () => (
   <div className="flex items-center justify-center gap-3 py-5">

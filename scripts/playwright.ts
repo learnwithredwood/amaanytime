@@ -33,7 +33,7 @@ const PLAYWRIGHT_COMMAND =
       env: shellenv,
     })
   }
-  console.log(APP_NAME)
+
   _checkDocker()
   _stopRemoveContainer()
 

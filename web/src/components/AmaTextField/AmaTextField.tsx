@@ -23,33 +23,29 @@ export interface IInputProps {
 const INPUT_CLASSES =
   'z-0 relative left-1 top-1 border border-neutral-800 bg-transparent p-1.5 text-xs w-full md:p-2 md:w-full'
 
-export function AmaTextField(props: IInputProps) {
-  return (
-    <div className="mx-5">
-      {props.label && <AmaLabel {...props} />}
-      <div className="bg-white">
-        {props.type === 'password' ? (
-          <PasswordInput {...props} />
-        ) : (
-          <TextInput {...props} />
-        )}
-      </div>
-      <FieldError name={props.name} className="rw-field-error" />
-    </div>
-  )
-}
-
-const AmaLabel = (props: IInputProps) => {
-  return (
-    <>
+export const AmaTextField = (props: IInputProps) => (
+  <div className="mx-5">
+    {props.label && <AmaLabel {...props} />}
+    <div className="bg-white">
       {props.type === 'password' ? (
-        <ForgotPasswordLabel {...props} />
+        <PasswordInput {...props} />
       ) : (
-        <DefaultLabel {...props} />
+        <TextInput {...props} />
       )}
-    </>
-  )
-}
+    </div>
+    <FieldError name={props.name} className="rw-field-error" />
+  </div>
+)
+
+const AmaLabel = (props: IInputProps) => (
+  <>
+    {props.type === 'password' ? (
+      <ForgotPasswordLabel {...props} />
+    ) : (
+      <DefaultLabel {...props} />
+    )}
+  </>
+)
 
 const DefaultLabel = (props: IInputProps) => (
   <Label
@@ -60,61 +56,55 @@ const DefaultLabel = (props: IInputProps) => (
   />
 )
 
-function TextInput(props: IInputProps) {
-  return (
-    <InputField
-      data-testid={`input-field-${props.name}`}
-      className={INPUT_CLASSES}
-      errorClassName="border-red-500"
-      name={props.name}
-      value={props.value}
-      validation={{
-        required: {
-          value: props.required,
-          message: `${props.name} is required!`,
-        },
-      }}
-      placeholder={props.placeholder || ''}
-      tabIndex={props.tabIndex}
-      {...props.inputProps}
-    />
-  )
-}
+const TextInput = (props: IInputProps) => (
+  <InputField
+    data-testid={`input-field-${props.name}`}
+    className={INPUT_CLASSES}
+    errorClassName="border-red-500"
+    name={props.name}
+    value={props.value}
+    validation={{
+      required: {
+        value: props.required,
+        message: `${props.name} is required!`,
+      },
+    }}
+    placeholder={props.placeholder || ''}
+    tabIndex={props.tabIndex}
+    {...props.inputProps}
+  />
+)
 
-const ForgotPasswordLabel = (props: IInputProps) => {
-  return (
-    <div
-      data-testid={`password-label-${props.name}`}
-      className="align-center flex justify-between"
+const ForgotPasswordLabel = (props: IInputProps) => (
+  <div
+    data-testid={`password-label-${props.name}`}
+    className="align-center flex justify-between"
+  >
+    <DefaultLabel {...props} />
+    <Link
+      data-testid="forgot-password"
+      to={routes.forgotPassword()}
+      className="text-xs underline hover:no-underline"
     >
-      <DefaultLabel {...props} />
-      <Link
-        data-testid="forgot-password"
-        to={routes.forgotPassword()}
-        className="text-xs underline hover:no-underline"
-      >
-        Forgot password?
-      </Link>
-    </div>
-  )
-}
+      Forgot password?
+    </Link>
+  </div>
+)
 
-function PasswordInput(props: IInputProps) {
-  return (
-    <PasswordField
-      data-testid={`password-field-${props.name}`}
-      className={INPUT_CLASSES}
-      errorClassName="border-red-500"
-      name={props.name}
-      validation={{
-        required: {
-          value: props.required,
-          message: `${props.name} is required!`,
-        },
-      }}
-      placeholder={props.placeholder || ''}
-      tabIndex={props.tabIndex}
-      {...props.inputProps}
-    />
-  )
-}
+const PasswordInput = (props: IInputProps) => (
+  <PasswordField
+    data-testid={`password-field-${props.name}`}
+    className={INPUT_CLASSES}
+    errorClassName="border-red-500"
+    name={props.name}
+    validation={{
+      required: {
+        value: props.required,
+        message: `${props.name} is required!`,
+      },
+    }}
+    placeholder={props.placeholder || ''}
+    tabIndex={props.tabIndex}
+    {...props.inputProps}
+  />
+)

@@ -1,7 +1,7 @@
 import { Toaster } from '@redwoodjs/web/dist/toast'
 
-import { Footer } from 'src/components/Footer/Footer'
-import { Navigation } from 'src/components/Navigation/Navigation'
+import { Footer } from 'src/components/Footer'
+import { Navigation } from 'src/components/Navigation'
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (

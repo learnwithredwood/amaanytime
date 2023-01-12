@@ -1,17 +1,15 @@
 import { Link, routes } from '@redwoodjs/router'
 
-import { useDevice } from '../../hooks/useDevice'
+import { useDevice } from 'src/hooks/useDevice'
 
 import { CopyrightInfo } from './CopyrightBar'
 
-export const Footer = () => {
-  return (
-    <div>
-      <SiteLinks />
-      <CopyrightInfo />
-    </div>
-  )
-}
+export const Footer = () => (
+  <div>
+    <SiteLinks />
+    <CopyrightInfo />
+  </div>
+)
 
 const SiteLinks = () => (
   <div className="flex items-center justify-center">
