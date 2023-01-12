@@ -14,7 +14,6 @@ module.exports = {
     extend: {
       backgroundImage: {
         bg: "url('./assets/bg.jpg')",
-        search: "url('./assets/bg__search.svg')",
       },
       backgroundSize: {
         half: '50% 100%',

@@ -37,7 +37,10 @@ export default function LoginPage() {
 const ContentContainer = () => {
   const { isMobile } = useDevice()
   return (
-    <div className="grid grid-cols-1 items-center justify-center md:grid-cols-2">
+    <div
+      data-testid="login-page"
+      className="grid grid-cols-1 items-center justify-center md:grid-cols-2"
+    >
       {isMobile ? (
         <MobileBackground />
       ) : (

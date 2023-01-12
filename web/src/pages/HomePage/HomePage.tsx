@@ -1,17 +1,22 @@
 import { MetaTags } from '@redwoodjs/web'
 
-import { ZealLogo } from '../../components/Svgs'
+import { RetroLogo } from '../../components/Svgs'
 
 function HomePage() {
   return (
     <>
       <MetaTags title="Home" description="Home page" />
       <div
-        data-testid="home-page"
-        className="m-10 flex flex-col items-center justify-center"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          transform: 'translateY(-5%)',
+          flexDirection: 'column',
+          zIndex: -1,
+        }}
       >
-        <h1 className="text-3xl">AMA Anytime!</h1>
-        <ZealLogo width={300} />
+        <RetroLogo height={400} />
       </div>
     </>
   )
