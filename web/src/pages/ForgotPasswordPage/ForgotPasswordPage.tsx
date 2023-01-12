@@ -45,7 +45,10 @@ const ForgotPasswordPage = () => {
         <div className="rw-scaffold rw-login-container">
           <div className="rw-segment">
             <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">
+              <h2
+                data-testid="forgot-password-heading"
+                className="rw-heading rw-heading-secondary"
+              >
                 Forgot Password
               </h2>
             </header>
@@ -62,6 +65,7 @@ const ForgotPasswordPage = () => {
                       Username
                     </Label>
                     <TextField
+                      data-testid="forgot-password-username"
                       name="username"
                       className="rw-input"
                       errorClassName="rw-input rw-input-error"
@@ -75,7 +79,12 @@ const ForgotPasswordPage = () => {
                   </div>
 
                   <div className="rw-button-group">
-                    <Submit className="rw-button rw-button-blue">Submit</Submit>
+                    <Submit
+                      data-testid="forgot-password-submit"
+                      className="rw-button rw-button-blue"
+                    >
+                      Submit
+                    </Submit>
                   </div>
                 </Form>
               </div>

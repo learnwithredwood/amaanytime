@@ -89,6 +89,7 @@ const ForgotPasswordLabel = (props: IInputProps) => {
     >
       <DefaultLabel {...props} />
       <Link
+        data-testid="forgot-password"
         to={routes.forgotPassword()}
         className="text-xs underline hover:no-underline"
       >
@@ -101,7 +102,7 @@ const ForgotPasswordLabel = (props: IInputProps) => {
 function PasswordInput(props: IInputProps) {
   return (
     <PasswordField
-      data-testid={`password-input-${props.name}`}
+      data-testid={`password-field-${props.name}`}
       className={INPUT_CLASSES}
       errorClassName="border-red-500"
       name={props.name}

@@ -2,20 +2,17 @@ import { test, expect } from '@playwright/test'
 
 test.describe('login as a user', () => {
   test('should login user', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/login')
 
-    await page.getByRole('link', { name: 'Login' }).click()
-    await expect(page).toHaveURL('/login')
-
-    const userNameInput = page.getByLabel('Username')
+    const userNameInput = page.getByTestId('input-field-username')
     await userNameInput.click()
-    await userNameInput.fill('admin')
+    await userNameInput.fill('user')
 
-    const passwordInput = page.getByLabel('Password')
+    const passwordInput = page.getByTestId('password-field-password')
     await passwordInput.click()
     await passwordInput.fill('password')
 
-    await page.getByRole('button', { name: 'Login' }).click()
+    await page.getByTestId('login-submit-button').click()
     await expect(page).toHaveURL('/')
 
     await page.getByRole('button', { name: 'Logout' }).click()

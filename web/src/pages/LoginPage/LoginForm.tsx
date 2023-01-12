@@ -40,6 +40,7 @@ export function LoginForm() {
       >
         {!isMobile && (
           <div
+            data-testid="login-button-mobile"
             style={{
               fontSize: '110px',
               margin: '0 0 0 1rem',
@@ -48,7 +49,7 @@ export function LoginForm() {
             }}
             className="font-condensed"
           >
-            SIGN IN
+            LOG IN
           </div>
         )}
         <AmaTextField name="username" label="username" />
@@ -56,11 +57,18 @@ export function LoginForm() {
         <div className="m-5 flex items-center justify-between">
           <div className="text-xs">
             Don&apos;t have an account?{' '}
-            <Link className="ml-1 font-bold" to={routes.signup()}>
+            <Link
+              data-testid="login-signup-button"
+              className="ml-1 font-bold"
+              to={routes.signup()}
+            >
               Sign up
             </Link>
           </div>
-          <Submit className="w-1/4 rounded-2xl bg-punch py-2 font-slab text-xs text-white">
+          <Submit
+            data-testid="login-submit-button"
+            className="w-1/4 rounded-2xl bg-punch py-2 font-slab text-xs text-white"
+          >
             LOG IN
           </Submit>
         </div>

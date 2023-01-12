@@ -8,3 +8,4 @@ web/playwright-report
 *pw.json
 .yarnrc.yml
 web/config/storybook*
+web/public

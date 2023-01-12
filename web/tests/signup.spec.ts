@@ -14,15 +14,7 @@ test.afterAll(async () => {
 
 test.describe('signup as a user', () => {
   test('should signup user', async ({ page }) => {
-    await page.goto('/')
-
-    await page.getByText('Login').click()
-    await page.waitForURL('/login')
-    const loginTitle = page.locator('h1')
-    expect(loginTitle)
-    await expect(loginTitle).toHaveText('Sign In')
-
-    await page.getByText('Sign up').click()
+    await page.goto('/signup')
     await page.waitForURL('/signup')
 
     const signupTitle = page.locator('.rw-heading-secondary')

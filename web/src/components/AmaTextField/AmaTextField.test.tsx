@@ -16,7 +16,7 @@ describe('AmaTextField', () => {
       name: 'foo',
       type: 'password',
     })
-    expect(screen.getByTestId('password-input-foo')).toBeInTheDocument()
+    expect(screen.getByTestId('password-field-foo')).toBeInTheDocument()
   })
 
   it('shows a label if you give it a label prop', () => {
