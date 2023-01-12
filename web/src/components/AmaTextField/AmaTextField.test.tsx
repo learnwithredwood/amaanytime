@@ -1,7 +1,7 @@
 import { Form } from '@redwoodjs/forms'
 import { render, screen } from '@redwoodjs/testing/web'
 
-import { AmaTextField, InputTypes, IInputProps } from './AmaTextField'
+import { AmaTextField, IInputProps } from './AmaTextField'
 
 const renderComponent = (props: IInputProps, formProps = {}) =>
   render(
@@ -14,7 +14,7 @@ describe('AmaTextField', () => {
   it('can change the input type', () => {
     renderComponent({
       name: 'foo',
-      type: InputTypes.PASSWORD,
+      type: 'password',
     })
     expect(screen.getByTestId('password-input-foo')).toBeInTheDocument()
   })
@@ -36,7 +36,7 @@ describe('AmaTextField', () => {
   it('shows the password label when type is password and there s label', () => {
     render(
       <Form>
-        <AmaTextField name="foo" type={InputTypes.PASSWORD} label="bar" />
+        <AmaTextField name="foo" type="password" label="bar" />
       </Form>
     )
     renderComponent({

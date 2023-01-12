@@ -5,7 +5,7 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { useDevice } from 'src/hooks/useDevice'
 
-import { AmaTextField, InputTypes } from '../../components/AmaTextField'
+import { AmaTextField } from '../../components/AmaTextField'
 
 export function LoginForm() {
   const { isMobile } = useDevice()
@@ -33,7 +33,7 @@ export function LoginForm() {
     }
   }
   return (
-    <div className="flex mt-20 flex-col items-center justify-center md:m-0 md:items-start">
+    <div className="mt-20 flex flex-col items-center justify-center md:m-0 md:items-start">
       <Form
         onSubmit={handleSubmit}
         className="flex w-screen flex-col gap-2 md:w-10/12 md:gap-4"
@@ -52,12 +52,8 @@ export function LoginForm() {
           </div>
         )}
         <AmaTextField name="username" label="username" />
-        <AmaTextField
-          name="password"
-          label="password"
-          type={InputTypes.PASSWORD}
-        />
-        <div className="flex m-5 items-center justify-between">
+        <AmaTextField name="password" label="password" type="password" />
+        <div className="m-5 flex items-center justify-between">
           <div className="text-xs">
             Don&apos;t have an account?{' '}
             <Link className="ml-1 font-bold" to={routes.signup()}>

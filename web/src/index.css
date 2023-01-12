@@ -23,6 +23,10 @@
     @apply bg-bg;
   }
 
+  form {
+    @apply mb-16;
+  }
+
   label {
     @apply block pb-2 font-slab text-base font-extrabold uppercase leading-6 text-black;
   }

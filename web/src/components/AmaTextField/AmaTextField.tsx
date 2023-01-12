@@ -9,7 +9,7 @@ import {
 import { Link, routes } from '@redwoodjs/router'
 
 export interface IInputProps {
-  type?: InputTypes
+  type?: string
   inputProps?: InputFieldProps
   labelProps?: LabelProps
   name: string
@@ -20,11 +20,6 @@ export interface IInputProps {
   placeholder?: string
 }
 
-export enum InputTypes {
-  TEXT,
-  PASSWORD,
-}
-
 const INPUT_CLASSES =
   'z-0 relative left-1 top-1 border border-neutral-800 bg-transparent p-1.5 text-xs w-full md:p-2 md:w-full'
 
@@ -33,7 +28,7 @@ export function AmaTextField(props: IInputProps) {
     <div className="mx-5">
       {props.label && <AmaLabel {...props} />}
       <div className="bg-white">
-        {props.type === InputTypes.PASSWORD ? (
+        {props.type === 'password' ? (
           <PasswordInput {...props} />
         ) : (
           <TextInput {...props} />
@@ -47,7 +42,7 @@ export function AmaTextField(props: IInputProps) {
 const AmaLabel = (props: IInputProps) => {
   return (
     <>
-      {props.type === InputTypes.PASSWORD ? (
+      {props.type === 'password' ? (
         <ForgotPasswordLabel {...props} />
       ) : (
         <DefaultLabel {...props} />

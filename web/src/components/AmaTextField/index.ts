@@ -1,1 +1,1 @@
-export { AmaTextField, InputTypes } from './AmaTextField'
+export { AmaTextField } from './AmaTextField'
