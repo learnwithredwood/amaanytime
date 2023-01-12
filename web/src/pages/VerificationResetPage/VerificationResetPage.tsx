@@ -11,7 +11,7 @@ const VERIFY_RESET_MUTATION = gql`
   }
 `
 
-const VerificationResetPage = ({ email }) => {
+const VerificationResetPage = ({ email }: { email?: string }) => {
   const [verifyReset, { loading }] = useMutation(VERIFY_RESET_MUTATION, {
     onCompleted: (response) => {
       toast.success(
