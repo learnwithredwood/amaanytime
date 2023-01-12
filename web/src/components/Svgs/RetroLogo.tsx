@@ -3,6 +3,7 @@ import { SVGProps } from 'react'
 export function RetroLogo(props?: SVGProps<SVGSVGElement>) {
   return (
     <svg
+      preserveAspectRatio="xMinYMax meet"
       viewBox="0 0 533 424"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

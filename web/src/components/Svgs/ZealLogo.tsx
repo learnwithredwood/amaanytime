@@ -3,6 +3,7 @@ import { SVGProps } from 'react'
 export function ZealLogo(props?: SVGProps<SVGSVGElement>) {
   return (
     <svg
+      preserveAspectRatio="xMinYMax meet"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 950.641 675.913"
       {...props}
