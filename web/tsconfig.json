@@ -33,6 +33,6 @@
     "../.redwood/types/includes/web-*",
     "../types",
     "./types"
-, "../tmp/ImageComponents"  ],
+  ],
   "exclude": ["tmp"]
 }
