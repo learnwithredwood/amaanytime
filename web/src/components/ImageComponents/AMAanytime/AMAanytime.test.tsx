@@ -1,11 +1,11 @@
 import { render } from '@redwoodjs/testing/web'
 
-import { ZealLogo } from './ZealLogo'
+import { AMAanytime } from './AMAanytime'
 
-describe('ZealLogo', () => {
+describe('AMAanytime', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<ZealLogo />)
+      render(<AMAanytime />)
     }).not.toThrow()
   })
 })

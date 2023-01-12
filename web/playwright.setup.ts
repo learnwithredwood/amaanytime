@@ -6,15 +6,15 @@ async function globalSetup() {
   const adminLogin = await browser.newPage()
   await adminLogin.goto(`${URL}/login`)
 
-  const usernameInput = adminLogin.getByLabel('username')
+  const usernameInput = adminLogin.getByTestId('input-field-username')
   await usernameInput.click()
   await usernameInput.fill('admin')
 
-  const passwordInput = adminLogin.getByLabel('password')
+  const passwordInput = adminLogin.getByTestId('password-field-password')
   await passwordInput.click()
   await passwordInput.fill('password')
 
-  await adminLogin.getByRole('button', { name: 'Login' }).click()
+  await adminLogin.getByTestId('login-submit-button').click()
   await adminLogin.waitForURL(URL, { waitUntil: 'domcontentloaded' })
 
   await adminLogin
@@ -24,11 +24,15 @@ async function globalSetup() {
   const userLogin = await browser.newPage()
   await userLogin.goto(`${URL}/login`)
 
-  await userLogin.locator('input[name="username"]').click()
-  await userLogin.locator('input[name="username"]').fill('user')
-  await userLogin.locator('input[name="password"]').click()
-  await userLogin.locator('input[name="password"]').fill('password')
-  await userLogin.getByRole('button', { name: 'Login' }).click()
+  const usersUserInput = userLogin.getByTestId('input-field-username')
+  await usersUserInput.click()
+  await usersUserInput.fill('user')
+
+  const usersPasswordInput = userLogin.getByTestId('password-field-password')
+  await usersPasswordInput.click()
+  await usersPasswordInput.fill('password')
+
+  await userLogin.getByTestId('login-submit-button').click()
   await userLogin.waitForURL(URL, { waitUntil: 'domcontentloaded' })
 
   await userLogin
